@@ -15,7 +15,7 @@ Every colour reference in CSS must use var(--name), never a hardcoded hex.
 ```css
 :root {
   /* Backgrounds */
-  --cream:        #f0ede6;   /* Page background — all cream sections */
+  --cream:        #f4f0e6;   /* Page background — all cream sections */
   --dusk:         #c8bfb0;   /* In-between register — subtle section bg radial glows only */
 
   /* Forest */
@@ -48,7 +48,7 @@ Every colour reference in CSS must use var(--name), never a hardcoded hex.
 
 | Variable | Hex | Role | Never use for |
 |---|---|---|---|
-| --cream | #f0ede6 | Page background, right column bg | Text |
+| --cream | #f4f0e6 | Page background, right column bg | Text |
 | --dusk | #c8bfb0 | Radial glow tints at low opacity (5–8%) only | Primary backgrounds, text |
 | --forest | #1a2218 | Dark sections, footer, nav overlay, scrolled nav bg at 94% opacity | Body text on cream |
 | --amber-gold | #c8922a | Amber divider core, pull quote left border | Backgrounds, body text |
