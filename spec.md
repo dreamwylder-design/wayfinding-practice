@@ -100,7 +100,7 @@ wayfinding-practice/
 ## Image inventory
 
 All images WebP format, 85% quality, maximum 2400px on the long edge.
-Logo stays as PNG — transparency required.
+Logo files stay as PNG. Three logo files — see logo section below.
 
 ### images/hero/
 | Filename | Description | Used in |
@@ -128,20 +128,33 @@ Logo stays as PNG — transparency required.
 | texture-fungus-purple-blue.webp | Purple-blue bracket fungus with amber edges | Background texture — exact placement TBD |
 
 ### images/logo/
-| Filename | Description |
-|---|---|
-| wayfinding-logo.png | Logo with transparency — single file, colour switching handled by CSS |
+| Filename | Description | Used in |
+|---|---|---|
+| wayfinding-logo.png | Full logo with mark, wordmark, and "Psychotherapy · Melbourne" tagline. Cream background baked in (#f4f0e6). | Hero section — large display logo in welcome section |
+| wayfinding-logo-compact.png | Mark and wordmark only — no tagline, no divider line. Cream background baked in (#f4f0e6). | Scrolled nav on cream backgrounds |
+| wayfinding-logo-outline.png | Outline-only version, solid black artwork, transparent background. | Transparent nav over hero and dark sections — rendered white via CSS filter |
 
-**Logo colour switching — CSS only, no second file needed:**
-```css
-/* Default — dark logo on cream (scrolled nav) */
-.logo img { filter: none; }
+**Logo behaviour — three states:**
 
-/* Light logo on dark backgrounds (footer, transparent nav over hero) */
-.nav-transparent .logo img,
-.footer .logo img { filter: brightness(0) invert(1); }
-```
-`brightness(0)` renders all artwork pure black, `invert(1)` flips to white. No second logo file required.
+**Hero logo — welcome section only:**
+- `wayfinding-logo.png` placed in the welcome section content, not in the nav
+- Width: 240px desktop, 180px mobile, height auto
+- Sits above the H1 in the right column content stack
+- Fades out as user scrolls past the hero section, coordinated with the 60px nav scroll trigger
+
+**Transparent nav (over hero image and dark sections):**
+- `wayfinding-logo-outline.png` at 130px wide
+- `filter: brightness(0) invert(1)` — renders white
+
+**Scrolled nav (cream background):**
+- `wayfinding-logo-compact.png` at 130px wide
+- No filter
+- Nav background: var(--cream) fully opaque — no opacity reduction, no backdrop blur
+- Bottom border: 0.5px solid var(--sage) at 15% opacity
+
+**Footer:**
+- `wayfinding-logo-outline.png` at 120px wide
+- `filter: brightness(0) invert(1)` — renders white on forest green
 
 ### Images available but not yet assigned
 | Filename | Description | Notes |
@@ -156,10 +169,10 @@ Logo stays as PNG — transparency required.
 **Desktop:**
 - Position: top of page, full width
 - Default state: transparent background, cream text/logo
-- Scrolled state: triggered after 60px scroll — slim fixed header, var(--cream) at 94% opacity, backdrop-filter blur(10px), fine bottom border (0.5px, var(--sage) at 15% opacity)
+- Scrolled state: triggered after 60px scroll — slim fixed header, var(--cream) fully opaque, fine bottom border (0.5px, var(--sage) at 15% opacity). No backdrop blur — fully opaque cream matches the baked-in logo background exactly.
 - Contents: Logo left | About · Contact (text links, centre-right) | Book a Discovery Call (CTA button, right)
 - Version 1 links: About, Contact. Architecture must support adding Approach, Fees, FAQs without restructuring.
-- Logo: wayfinding-logo.png with transparency. Links to index.html.
+- Logo in nav: see logo behaviour in image inventory above
 - CTA button: links to Halaxy booking page (placeholder: `#halaxy`), opens in new tab
 
 **Mobile (below 768px):**
