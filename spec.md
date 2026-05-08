@@ -77,6 +77,7 @@ wayfinding-practice/
 ├── index.html          # Home page
 ├── about.html          # About page
 ├── contact.html        # Contact page
+├── faq.html            # FAQ page
 ├── privacy.html        # Privacy policy (simple)
 ├── css/
 │   └── style.css       # Single stylesheet, shared across all pages
@@ -170,8 +171,8 @@ Logo files stay as PNG. Three logo files — see logo section below.
 - Position: top of page, full width
 - Default state: transparent background, cream text/logo
 - Scrolled state: triggered after 60px scroll — slim fixed header, var(--cream) fully opaque, fine bottom border (0.5px, var(--sage) at 15% opacity). No backdrop blur — fully opaque cream matches the baked-in logo background exactly.
-- Contents: Logo left | About · Contact (text links, centre-right) | Book a Discovery Call (CTA button, right)
-- Version 1 links: About, Contact. Architecture must support adding Approach, Fees, FAQs without restructuring.
+- Contents: Logo left | About · Contact · FAQ (text links, centre-right) | Book a Discovery Call (CTA button, right)
+- Version 1 links: About, Contact, FAQ. Architecture must support adding Approach, Fees without restructuring.
 - Logo in nav: see logo behaviour in image inventory above
 - CTA button: links to Halaxy booking page (placeholder: `#halaxy`), opens in new tab
 
@@ -306,12 +307,15 @@ No other images carry captions. Images used as darkened section backgrounds carr
 - Vertical alignment: centre
 
 Content order (all `.reveal`):
-1. Eyebrow: "Psychotherapy · Melbourne" — section label scale, var(--mist), written in mixed case, uppercased by CSS
-2. H1: "Finding your way / through uncertain terrain" — Cormorant Garamond, italic, clamp(3rem, 6vw, 5rem), line-height: 1.05, var(--forest), line-break after "way"
-3. Body: "Individual psychotherapy for adults navigating difficulty, transition, and the harder questions of living. Depth-oriented, relational, unhurried." — DM Sans 300, 1rem, var(--earth). Max-width 480px.
-4. CTA link: "Begin the conversation →" — underline-only, links to contact.html
-5. Divider line: 0.5px solid var(--pale)
-6. Practitioner credit: label "Practitioner" in var(--mist), name "Richard Tronson" in Cormorant Garamond, var(--earth)
+1. Hero logo: `wayfinding-logo.png` — 240px wide desktop, 180px mobile, height auto. Links to index.html. Fades out on scroll past hero.
+2. Descriptor: "Psychotherapy & Counselling · Melbourne" — DM Sans, 0.65rem, tracking 0.3em, uppercase via CSS, var(--cream). Gap above: 0.5rem. Gap below: 1.5rem.
+3. H1: "Finding your way / through uncertain terrain" — Cormorant Garamond, italic, clamp(3rem, 6vw, 5rem), line-height: 1.05, var(--cream), line-break after "way"
+4. Body: "Individual psychotherapy for adults navigating difficulty, transition, and the harder questions of living. Depth-oriented, relational, unhurried." — DM Sans 300, 1rem, var(--cream) at 85% opacity. Max-width 480px.
+5. CTA link: "Begin the conversation →" — underline-only, var(--cream), links to contact.html
+6. Divider line: 0.5px solid var(--cream) at 20% opacity
+7. Practitioner credit: label "Practitioner" in var(--cream) at 60% opacity, name "Richard Tronson" in Cormorant Garamond, var(--cream)
+
+**Note on welcome section colours:** The right column sits over the hero image on the left — there is no cream background panel. All text is cream/white to read against the photograph. The layout is full-bleed image with text overlaid on the right side, not a split cream panel.
 
 **Mobile:** Stack to single column. Image top (50vh), content below. Padding 3rem 2rem.
 
@@ -460,7 +464,17 @@ Uses the same nav and footer HTML as all other pages. See shared components abov
 Content blocks (all `.reveal`):
 - H1: Richard's name — Cormorant, clamp(3rem, 6vw, 5rem), line-height: 1.05, var(--forest)
 - Subheading: "Psychotherapist · Melbourne" — section label scale, var(--mist), written in mixed case, uppercased by CSS
-- About copy — Richard's own text (to be provided, used verbatim). DM Sans 300, 1rem, var(--earth). Max-width 580px strictly observed.
+- About copy — use this text verbatim:
+
+  "I am a human before I am a therapist. I believe that connection is healing — that therapy offers people a chance to pause, slow down, and re-orient. I think of it as a form of wayfinding that happens in relationship: a space to listen more deeply, feel, speak openly, and make sense of life. The work is relational, but it is always in service of you.
+
+  My approach is real, relational, and embodied. Before training in counselling and psychotherapy, I spent years facilitating movement, community wellbeing, and self-inquiry — including formal training in dance movement therapy. Those roots inform how I work: with steadiness, attunement, and a capacity to stay present with uncertainty, strong emotion, and the places where things don't yet make sense. I bring warmth, openness, and an ability to hold both the detail and the bigger picture of a person's experience.
+
+  I am open to working with everyone, and have a particular interest in life transitions and identity exploration, experiences of disconnection, anxiety, stress and emotional overwhelm, grief and loss, and relational difficulties. My work is trauma-informed and integrative.
+
+  You don't need to know exactly what you want to work on to begin — we can start wherever you are."
+
+  DM Sans 300, 1rem, var(--earth). Max-width 580px strictly observed.
 - Divider: 0.5px solid var(--amber-gold), full column width
 
 ### Section 3 — Approach / credentials
@@ -626,7 +640,67 @@ After the form. The visitor has reached out, or is about to. A final breath.
 
 ---
 
-## Page 4 — privacy.html
+## Page 4 — faq.html
+
+### SEO
+```html
+<title>FAQ — Wayfinding Practice Melbourne</title>
+<meta name="description" content="Frequently asked questions about Wayfinding Practice — sessions, fees, cancellations, telehealth, and Richard's approach.">
+<link rel="canonical" href="https://wayfindingpractice.com.au/faq.html">
+```
+
+### Shared nav and footer
+Uses the same nav and footer HTML as all other pages.
+
+### Content
+Simple, cream background. Max-width 680px centred. DM Sans 300 body, Cormorant headings. Minimal animations — `.reveal` on each Q&A block with stagger.
+
+**H1:** "Some questions, answered."
+**Intro:** "If something isn't covered here, you're welcome to get in touch. There are no wrong questions." — DM Sans 300, 1rem, var(--stone)
+
+**Q&A format:**
+- Question: DM Sans 400, 0.9rem, var(--forest), uppercase, tracking 0.1em — or Cormorant italic 1.2rem var(--forest) — decide during build which reads better
+- Answer: DM Sans 300, 1rem, var(--earth), max-width 580px
+- Divider between items: 0.5px solid var(--pale)
+- Each Q&A block: `.reveal` with stagger 0.1s
+
+**Questions and answers — use verbatim:**
+
+**What does a session with you look like?**
+I practice integrative psychotherapy — which means I don't apply a single method to everyone who walks in. Instead, I work from what you bring: your history, your context, the way you make sense of things. Sessions are collaborative and unhurried. There's no script, and no homework unless it genuinely fits. The work is done when it feels done — that's something we work out together, not something decided in advance.
+
+**What does it cost, and are there rebates available?**
+Sessions are $110. Psychotherapy is not currently covered by Medicare or private health insurance in Australia — an ongoing gap in recognition that affects many practitioners and the people who seek their support. If cost is a barrier, please reach out and we can talk about what's possible.
+
+**What is your cancellation policy?**
+I ask for 48 hours notice for cancellations or appointment changes. Cancellations made within 24 hours of a scheduled session will incur the full session fee. I understand that life doesn't always allow for advance notice — if something unexpected comes up, please reach out as soon as you can and we'll work it out.
+
+**Where are you located, and how does telehealth work?**
+I work from a consulting room in outer northeast Melbourne, and also offer sessions via telehealth. Online sessions run through a secure video platform — all you need is a quiet private space and a reliable internet connection. [Address and location details to be added before launch.]
+
+**What's the difference between psychotherapy and counselling?**
+There's a lot of overlap between the different approaches to mental health care, but there are meaningful distinctions. Psychology is a science and its approaches are largely evidence-based and structured — psychologists are trained to assess, diagnose, and treat specific conditions using established frameworks. Counselling tends to focus on specific life challenges, offering a supportive space to navigate difficulty and make sense of what's happening. Psychotherapy goes deeper — it's concerned not just with symptoms or situations, but with the underlying patterns, relationships, and ways of being that shape how we experience our lives. The work is slower, more relational, and oriented toward lasting change rather than immediate relief. My practice draws on both counselling and psychotherapy traditions, shaped by what each person actually needs.
+
+**Do you work with couples or families?**
+I work with individual adults only. I don't currently offer couples or family therapy.
+
+**How do people know when they're ready to finish therapy?**
+There's no fixed answer — the minimum effective dose of therapy is different for every person and every problem. Generally, people know they're ready to finish when the difficulty that brought them has resolved, when old patterns no longer have the same grip, or when they simply feel more integrated and at ease in themselves. That sense of readiness usually emerges naturally in the work rather than being decided in advance. We'll know it when we get there.
+
+**What is your approach to working with clients from diverse cultural backgrounds, sexualities, and identities?**
+You don't need to be a certain kind of person to belong in a session with me. Everyone is welcome. I work with people from all cultural backgrounds, sexualities, and identities — I don't assume a single experience of what it means to live a good life, or one right way of finding a way through it. I aim to meet each person with openness and care, attentive and responsive to your experience on its own terms, with all its complexity. I also recognise that I likely cannot fully understand your experience — particularly where it differs significantly from my own — and I won't pretend otherwise. What I can offer is a genuine commitment to not making you translate yourself to be understood.
+
+**What if I'm in crisis or need urgent support?**
+I'm not a crisis support service — my work is longer-term and relational rather than immediate intervention. If you're in crisis or need urgent support, please contact Lifeline on 13 11 14, available 24 hours a day. Beyond Blue (1300 22 4636) and the Crisis Assessment and Treatment team through your local hospital are also available. If you're in immediate danger, please call 000.
+
+**Closing CTA:**
+- Text: "Still have a question? Get in touch — even a few words is enough to start."
+- Button: "Send a message" — links to contact.html
+- Style: same as other page CTAs
+
+---
+
+## Page 5 — privacy.html
 
 ### SEO
 ```html
