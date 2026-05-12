@@ -1,5 +1,5 @@
 # SPEC.md — Wayfinding Practice
-## Technical Specification v1.4
+## Technical Specification v1.7
 
 ---
 
@@ -39,10 +39,10 @@ The site never asks if the visitor is ready. It simply makes being here feel saf
 
 ## Page legibility arc
 
-The welcome section is clear and grounded from the first viewport. The proposition, the practitioner, and a path forward are all visible without scrolling. Atmosphere lives in the middle of the journey — the quote, the tree, the fungus band. Contact is plain, warm, and functional.
+The welcome section is atmospheric — full-bleed imagery with a quiet eyebrow line establishes ground before content. The practical proposition, practitioner, and CTA appear in the sections immediately below the hero. Atmosphere lives in the middle of the journey — the quote, the tree, the fungus band. Contact is plain, warm, and functional.
 
 **The arc:**
-- **Welcome (Section 1):** Clear immediately. Proposition, practitioner, CTA all in first viewport. No ambiguity about what this is or who it's for.
+- **Welcome (Section 1):** Atmospheric full-bleed hero. Brand mark, descriptors ("Psychotherapy & Counselling · Melbourne" / "In Person & Online"). The proposition begins immediately below in the next section.
 - **Middle sections (2–6):** Depth and texture. The visitor who is curious goes deeper. The visitor who is ready can jump to contact at any point via the nav.
 - **Lower sections (7–9):** Increasingly practical and grounded. Services, process, contact form.
 - **Contact page:** The clearest, most structured part of the site. Plain, warm, no friction.
@@ -87,6 +87,7 @@ wayfinding-practice/
 │   ├── hero/
 │   ├── about/
 │   ├── contact/
+│   ├── faq/
 │   ├── texture/
 │   └── logo/
 ├── CLAUDE.md
@@ -101,7 +102,7 @@ wayfinding-practice/
 ## Image inventory
 
 All images WebP format, 85% quality, maximum 2400px on the long edge.
-Logo files stay as PNG. Three logo files — see logo section below.
+Logo stays as PNG — transparency required.
 
 ### images/hero/
 | Filename | Description | Used in |
@@ -115,47 +116,43 @@ Logo files stay as PNG. Three logo files — see logo section below.
 | about-richard-portrait.webp | Richard Tronson portrait — PLACEHOLDER, replace before launch. Background blurred and darkened in Photoshop. | About page Section 1 |
 | about-eucalyptus-dawn.webp | Tall eucalyptus at dawn, terracotta bark, blue-grey canopy | About page — exact placement TBD in Phase 2 |
 | about-moss-sporophytes.webp | Moss with sporophytes in golden light | About page Section 4 (beside pull quote) |
-| about-bark-galleries.webp | Bark insect galleries, full width | About page Section 4 (visual breath) |
+| about-bark-galleries.webp | Bark insect galleries, full width | About page — below amber divider after Richard's copy, before credentials section |
 
 ### images/contact/
 | Filename | Description | Used in |
 |---|---|---|
-| contact-dandelion-dispersal.webp | Dandelion seeds dispersing | Contact page Section 3 (closing image) |
+| contact-dandelion-dispersal.webp | Dandelion seeds dispersing | Contact page — between H1/subline and contact grid |
+
+### images/faq/
+| Filename | Description | Used in |
+|---|---|---|
+| faq-illustration-conversation.webp | Two people in conversation, delicate line illustration on cream | FAQ page — below H1 and intro, before first Q&A block |
 
 ### images/texture/
 | Filename | Description | Used in |
 |---|---|---|
-| texture-amber-diagonal.webp | Amber fungus growing edge diagonal across dark surface | Home page Section 6 (fungus band) |
+| texture-amber-diagonal.webp | Amber fungus growing edge diagonal across dark surface | FAQ page — midway after telehealth question |
 | texture-fungus-purple-blue.webp | Purple-blue bracket fungus with amber edges | Background texture — exact placement TBD |
+| texture-path-trace.webp | Pale watercolour wash suggesting a winding path, transparent background | Home page — overlay between hero bottom and approach section. **Asset not yet complete — to be generated and added before implementation.** |
 
 ### images/logo/
-| Filename | Description | Used in |
-|---|---|---|
-| wayfinding-logo.png | Full logo with mark, wordmark, and "Psychotherapy · Melbourne" tagline. Cream background baked in (#f4f0e6). | Hero section — large display logo in welcome section |
-| wayfinding-logo-compact.png | Mark and wordmark only — no tagline, no divider line. Cream background baked in (#f4f0e6). | Scrolled nav on cream backgrounds |
-| wayfinding-logo-outline.png | Outline-only version, solid black artwork, transparent background. | Transparent nav over hero and dark sections — rendered white via CSS filter |
+| Filename | Description |
+|---|---|
+| wayfinding-logo-outline.png | Outline wordmark — used over hero imagery and on dark backgrounds (footer, transparent nav) |
+| wayfinding-logo-compact.png | Compact mark + wordmark — used in scrolled nav state on cream |
 
-**Logo behaviour — three states:**
+**Logo colour switching — two-file model:**
+Outline and compact logos are separate PNG assets. The nav cross-fades between them on scroll via opacity (no CSS filter trick). The footer and transparent-over-hero nav use the outline logo with `filter: brightness(0) invert(1)` to render it cream on forest. Single hero overlay uses the outline logo at 360px wide (240px on mobile) at the top-left of the welcome hero.
 
-**Hero logo — welcome section only:**
-- `wayfinding-logo.png` placed in the welcome section content, not in the nav
-- Width: 240px desktop, 180px mobile, height auto
-- Sits above the H1 in the right column content stack
-- Fades out as user scrolls past the hero section, coordinated with the 60px nav scroll trigger
+```css
+.nav__logo-img--outline { /* default — visible over hero */ }
+.nav__logo-img--compact { opacity: 0; /* fades in on .is-scrolled */ }
+.nav.is-scrolled .nav__logo-img--outline { opacity: 0; }
+.nav.is-scrolled .nav__logo-img--compact { opacity: 1; }
+.footer .footer__logo img { filter: brightness(0) invert(1); }
+```
 
-**Transparent nav (over hero image and dark sections):**
-- `wayfinding-logo-outline.png` at 130px wide
-- `filter: brightness(0) invert(1)` — renders white
-
-**Scrolled nav (cream background):**
-- `wayfinding-logo-compact.png` at 130px wide
-- No filter
-- Nav background: var(--cream) fully opaque — no opacity reduction, no backdrop blur
-- Bottom border: 0.5px solid var(--sage) at 15% opacity
-
-**Footer:**
-- `wayfinding-logo-outline.png` at 120px wide
-- `filter: brightness(0) invert(1)` — renders white on forest green
+**Important:** The `filter: brightness(0) invert(1)` applies to the outline logo in the footer and over the hero ONLY. It must never be applied to the compact logo in the scrolled nav state.
 
 ### Images available but not yet assigned
 | Filename | Description | Notes |
@@ -170,16 +167,16 @@ Logo files stay as PNG. Three logo files — see logo section below.
 **Desktop:**
 - Position: top of page, full width
 - Default state: transparent background, cream text/logo
-- Scrolled state: triggered after 60px scroll — slim fixed header, var(--cream) fully opaque, fine bottom border (0.5px, var(--sage) at 15% opacity). No backdrop blur — fully opaque cream matches the baked-in logo background exactly.
+- Scrolled state: triggered after 60px scroll — slim fixed header, var(--cream) at 94% opacity, backdrop-filter blur(10px), fine bottom border (0.5px, var(--sage) at 15% opacity)
 - Contents: Logo left | About · Contact · FAQ (text links, centre-right) | Book a Discovery Call (CTA button, right)
-- Version 1 links: About, Contact, FAQ. Architecture must support adding Approach, Fees without restructuring.
-- Logo in nav: see logo behaviour in image inventory above
+- Version 1 links: About, Contact, FAQ. Architecture is `<ul class="nav__links"><li>` based — adding Approach, Fees, etc. is a one-line `<li>` insertion with no restructuring.
+- Logo: two-file model — outline + compact PNGs cross-fade via opacity on scroll. See Image inventory for details. Links to index.html.
 - CTA button: links to Halaxy booking page (placeholder: `#halaxy`), opens in new tab
 
 **Mobile (below 768px):**
 - Logo left | Book (text link, `#halaxy`) | ☰ hamburger right
 - Hamburger opens full-screen overlay menu with all page links
-- Overlay: var(--forest) background, var(--cream) text, links centred, large serif font
+- Overlay: var(--forest) background, var(--cream) text, links centred, large serif font — font-family: 'Cormorant Garamond', serif, italic, explicit on .nav-overlay__link
 - Close button top right
 
 ### Footer
@@ -198,6 +195,11 @@ See brand.md — copy the link tags exactly as specified there.
 See brand.md — all sizes, weights, fonts, and colour assignments are defined there.
 
 **Section labels in HTML:** Written in mixed case. Uppercased by CSS via `text-transform: uppercase`. Never written in all-caps in HTML.
+
+### Confirmed brand tokens
+- `--cream: #f4f0e6` ✓
+- `--mist: #7a6e7c` ✓ defined in :root
+- `.nav-overlay__link` font-family: 'Cormorant Garamond', serif, italic ✓ explicit, not inherited
 
 ### Scroll animations — all pages
 Implemented via GSAP ScrollTrigger.
@@ -248,8 +250,8 @@ Hard edges and gradient transitions are explicit design decisions, not defaults.
 |---|---|
 | Cream Welcome → dark Quote | 80px gradient overlap at bottom of cream section fading to dark |
 | Dark Quote → Cream Approach | Hard edge — the contrast is the point |
-| Dark Tree section → Fungus band | Hard edge — both dark, band provides punctuation |
-| Fungus band → Services (cream) | 60px gradient transition |
+| Dark Tree section → Amber divider | Hard edge into 24px amber band |
+| Amber divider → Services (cream) | Hard edge out of band into cream |
 | All others | Hard edge unless specified |
 
 ### Photography captions
@@ -259,7 +261,7 @@ Four captions only. Each placed at the structural moment corresponding to a TTM 
 - Italic, 0.68rem, tracking 0.06em
 - Colour: var(--stone) — receding, not competing
 - Written in mixed case HTML, no punctuation
-- Position: below image, left-aligned
+- Position: below image, left-aligned except fungus band caption which is right-aligned
 - Maximum length: five words
 - Visible on both desktop and mobile (smaller on mobile — reduce to 0.6rem)
 
@@ -267,12 +269,12 @@ Four captions only. Each placed at the structural moment corresponding to a TTM 
 
 **The four captions — TTM arc:**
 
-| Stage | Image | Caption |
-|---|---|---|
-| Precontemplation | hero-path-golden-hour.webp | the ground before you know |
-| Contemplation | hero-tree-bw-panoramic.webp | still here, after everything |
-| Preparation | texture-amber-diagonal.webp (fungus band) | the growing edge |
-| Action | contact-dandelion-dispersal.webp | ready, without knowing where |
+| Stage | Image | Caption | Page |
+|---|---|---|---|
+| Precontemplation | hero-path-golden-hour.webp | the ground before you know | index.html |
+| Contemplation | hero-tree-bw-panoramic.webp | still here, after everything | index.html |
+| Preparation | texture-amber-diagonal.webp (fungus band) | the growing edge | faq.html |
+| Action | contact-dandelion-dispersal.webp | ready, without knowing where | contact.html |
 
 No other images carry captions. Images used as darkened section backgrounds carry no caption.
 
@@ -290,41 +292,42 @@ No other images carry captions. Images used as darkened section backgrounds carr
 <link rel="canonical" href="https://wayfindingpractice.com.au/">
 ```
 
-### Section 1 — Welcome (split layout)
-**Layout:** CSS Grid, two columns, **55fr 45fr** (image slightly dominant). Min-height: 90vh (not 100vh — let content breathe; proposition must be visible without scrolling). Padding-top: nav height (80px).
+### Section 1 — Welcome (full-bleed hero)
+**Layout:** Full-bleed hero image. Min-height: 90vh. Padding-top: nav height (80px).
 
-**Left column — image:**
+**Background image:**
 - Image: `hero-path-golden-hour.webp`
-- Object-fit: cover, object-position: center 40%
-- Full height of section
-- No parallax — image is fixed
-- Alt text: "A dirt path through eucalyptus trees toward golden morning light, Melbourne"
-- Caption below image (both desktop and mobile): "the ground before you know"
+- background-size: cover, background-position: center 40%
+- Dark gradient overlay at top only — covers top 200px, fades to transparent below that. Does not reach the eyebrow stack at the bottom.
+- Alt text equivalent: "A dirt path through eucalyptus trees toward golden morning light, Melbourne"
+- Caption: "the ground before you know" — below hero image, left-aligned, var(--stone)
 
-**Right column — content:**
-- Background: var(--cream)
-- Padding: 4rem 4rem 4rem 5rem (reduced from 6rem to ensure content fits without scrolling)
-- Vertical alignment: centre
+**Top-left overlay — hero logo:**
+- Outline logo at 360px wide (240px on mobile), positioned top: 2rem, left: 3rem
+- Filter: brightness(0) invert(1) — renders cream on the imagery
 
-Content order (all `.reveal`):
-1. Hero logo: `wayfinding-logo.png` — 240px wide desktop, 180px mobile, height auto. Links to index.html. Fades out on scroll past hero.
-2. Descriptor: "Psychotherapy & Counselling · Melbourne" — DM Sans, 0.65rem, tracking 0.3em, uppercase via CSS, var(--cream). Gap above: 0.5rem. Gap below: 1.5rem.
-3. H1: "Finding your way / through uncertain terrain" — Cormorant Garamond, italic, clamp(3rem, 6vw, 5rem), line-height: 1.05, var(--cream), line-break after "way"
-4. Body: "Individual psychotherapy for adults navigating difficulty, transition, and the harder questions of living. Depth-oriented, relational, unhurried." — DM Sans 300, 1rem, var(--cream) at 85% opacity. Max-width 480px.
-5. CTA link: "Begin the conversation →" — underline-only, var(--cream), links to contact.html
-6. Divider line: 0.5px solid var(--cream) at 20% opacity
-7. Practitioner credit: label "Practitioner" in var(--cream) at 60% opacity, name "Richard Tronson" in Cormorant Garamond, var(--cream)
+**Bottom-left overlay — eyebrow stack:**
+- Padding-bottom on the section: 1rem
+- Eyebrow line 1: "PSYCHOTHERAPY & COUNSELLING · MELBOURNE" — DM Sans, 14px, letter-spacing 0.3em, uppercase in HTML, colour var(--cream)
+- Hairline divider: 0.5px solid var(--cream) at 20% opacity, max-width 360px
+- Eyebrow line 2: "IN PERSON & ONLINE" — same styling as line 1
+- Stack gap: 0.5rem between each item
 
-**Note on welcome section colours:** The right column sits over the hero image on the left — there is no cream background panel. All text is cream/white to read against the photograph. The layout is full-bleed image with text overlaid on the right side, not a split cream panel.
+### Section 1b — Path trace overlay (planned, asset pending)
+**Status: Not yet implemented — texture-path-trace.webp not yet generated.**
 
-**Mobile:** Stack to single column. Image top (50vh), content below. Padding 3rem 2rem.
+When asset is ready:
+- Absolutely positioned overlay emerging from the bottom of the hero
+- Image: `texture-path-trace.webp` — pale watercolour wash, transparent background
+- Fades to fully transparent before the first text content in Section 3
+- aria-hidden="true", pointer-events: none
+- Works on desktop. On mobile: narrower or absent if it compromises layout.
 
 ### Section 2 — Amber divider
 - Height: 24px
 - Background: see brand.md amber divider gradient
 - Opacity: 0.5
 - No text
-- This is a genuine visual pause, not a hairline. Give it room.
 
 ### Section 3 — Approach
 **Background:** var(--cream) with very subtle radial glow at 4% opacity (use var(--dusk) for the glow tint), right side.
@@ -339,7 +342,7 @@ Content:
 - Three pillars grid (3 columns desktop, 1 column mobile):
   - Each pillar: large number (Cormorant, 5rem, var(--forest) at 18% opacity), heading (Cormorant italic, 1.3rem, var(--forest)), body (DM Sans 300, 0.9rem, var(--earth))
   - **01 Relational / 02 Grounded & Contextual / 03 Unhurried**
-  - Pillar 02 copy: Leave this placeholder in the HTML exactly: `<!-- [COPY NEEDED: Richard to provide body text for "Grounded & Contextual" pillar] -->`
+  - **Pillar 02 copy: Written by Claude Design — Richard must review and approve before launch.**
   - Border-top: 0.5px solid var(--pale), padding-top: 3rem
   - Each pillar: `.reveal` with stagger 0.15s
 
@@ -352,7 +355,7 @@ Content:
 - Attribution: "— Wayfinding Practice" — var(--amber-gold) at 40% opacity, spaced caps, 0.65rem. Appears after quote settles.
 
 ### Section 5 — Tree / About deeper (split, dark)
-**Layout:** Two columns, **45fr 55fr** (content slightly dominant — reversed from welcome). Min-height: 80vh.
+**Layout:** Two columns, **45fr 55fr**. Min-height: 80vh.
 **Background:** var(--forest)
 
 **Left column — B&W tree image:**
@@ -360,7 +363,7 @@ Content:
 - filter: grayscale(100%)
 - Object-fit: cover, object-position: center top
 - Full height
-- Caption (both desktop and mobile, below image): "still here, after everything"
+- Caption: "still here, after everything" — below image, left-aligned, var(--stone)
 
 **Right column — content:**
 - Padding: 6rem 5rem
@@ -368,13 +371,14 @@ Content:
 - H2: "A human before / a therapist" — var(--cream), Cormorant, `.reveal-mask`
 - Two body paragraphs — var(--sage), DM Sans 300. Max-width 480px.
 - Link: "Learn more about my approach →" — DM Sans 400, var(--sage), links to about.html
-- Second link below, quieter: "Or reach out directly →" — DM Sans 300, 0.85rem, var(--stone), links to contact.html. Not a button — a thread to pull for someone who has already decided.
+- Second link below, quieter: "Or reach out directly →" — DM Sans 300, 0.85rem, var(--stone), links to contact.html.
 
-### Section 6 — Fungus band divider
-**Height:** 300px
-**Background image:** `texture-amber-diagonal.webp`, darkened with overlay rgba(0,0,0,0.55)
-**Centred text:** "In person · Telehealth · Melbourne" — spaced small caps, var(--amber-gold) at 50% opacity, 0.72rem
-**Caption:** "the growing edge" — below the band, right-aligned, var(--stone)
+### Section 6 — Amber divider
+- Height: 24px
+- Background: see brand.md amber divider gradient
+- Opacity: 0.5
+- No text
+- Sits between the tree section (dark) and services section (cream)
 
 ### Section 7 — Services
 **Background:** var(--cream) with very subtle radial glow at 6% opacity (use var(--dusk) for tint, blue-grey direction)
@@ -382,9 +386,9 @@ Content:
 
 - Two-column header: H2 "What I offer" left, intro text right (max-width 380px)
 - Service rows list (border-top at section start, each row border-bottom 0.5px solid var(--pale)):
-  - Each row layout: large row number (Cormorant, 4rem, var(--pale) at 60% — left side) | service name (Cormorant italic, 1.6rem, var(--forest)) | description (DM Sans 300, 0.86rem, var(--stone) — below the name, not a second column)
-  - Hover: `transform: translateX(0.75rem)` on the name (0.3s ease) — use transform, not padding-left, to avoid layout reflow
-  - Services — in this order:
+  - Each row layout: large row number (Cormorant, 4rem, var(--pale) at 60% — left side) | service name (Cormorant italic, 1.6rem, var(--forest)) | description (DM Sans 300, 0.86rem, var(--stone) — below the name)
+  - Hover: `transform: translateX(0.75rem)` on the name (0.3s ease) — use transform, not padding-left
+  - Services:
     - 01 Individual therapy
     - 02 Anxiety & stress
     - 03 Life transitions & identity
@@ -396,13 +400,12 @@ Content:
 **Background:** See brand.md forest green gradient.
 **Padding:** 8rem 3rem, max-width 1000px
 
-- Section label: "How it begins" at label scale, var(--sage), `.reveal`
+- Section label: "How it begins" — var(--sage), `.reveal`
 - H2: "How it begins" — var(--cream), `.reveal-mask`
 - Intro paragraph: var(--sage), `.reveal`. Max-width 580px.
 - Three step dots with connecting line (desktop), stacked (mobile)
 - Each step: dot, heading (Cormorant italic, var(--cream)), body (DM Sans 300, var(--sage))
 - Steps: **Reach out / A first conversation / Take it from there**
-  - "Take it from there" implies no predetermined commitment to a course of therapy
 - Consultation offer box:
   - Border: 0.5px solid var(--sage) at 30% opacity
   - Heading: "Free 20-minute discovery call" — Cormorant italic, var(--cream), clamp(1.5rem, 2.5vw, 2rem)
@@ -424,11 +427,11 @@ Content:
 - H2: "You're welcome / to reach out" — `.reveal-mask`
 - Body paragraph: var(--earth), `.reveal`
 - Contact details: Location (Melbourne, Victoria), Sessions (In person & telehealth)
-- Response time: "I'll be in touch within two business days." — the subject is a person, not a timeframe
+- Response time: "I'll be in touch within two business days."
 - Book a Session button: links to `#halaxy`, opens new tab
 
 **Right column — form:**
-See Contact page form specification. The same form HTML is used here and on contact.html. Both submit to the same Formspree endpoint. This is intentional — the home page form catches visitors who are ready without navigating away.
+See Contact page form specification. Same form HTML used here and on contact.html. Both submit to Formspree `xeenlvka`.
 
 ---
 
@@ -441,30 +444,22 @@ See Contact page form specification. The same form HTML is used here and on cont
 <link rel="canonical" href="https://wayfindingpractice.com.au/about.html">
 ```
 
-### Shared nav and footer
-Uses the same nav and footer HTML as all other pages. See shared components above.
-
 ### Section 1 — Portrait
-**Layout:** Portrait image sits large at top — not a conventional full-width hero.
-
 - Max-height: 70vh desktop, 50vh mobile
-- Object-fit: cover
-- Object-position: 70% from left — not centred. Negative space on one side. This is a deliberate aesthetic decision.
+- Object-fit: cover, object-position: 70% from left
 - Width: 100%
-- Gradient overlay at image bottom: transparent → var(--cream), covering the bottom 80px
-- The cream band creates a soft visual bridge to the content below — not a hard cut
-- H1 sits on the cream band, line-height: 1.05. At max clamp size (~5rem) the first line sits within the 80px gradient zone. This is intentional — text and image share the same space.
-- Image: `about-richard-portrait.webp` — **PLACEHOLDER. Background blurred and darkened. Replace with final portrait before launch.**
+- Gradient overlay at image bottom: transparent → var(--cream), covering bottom 80px
+- H1 sits on the cream band, line-height: 1.05
+- Image: `about-richard-portrait.webp` — **PLACEHOLDER. Replace with final portrait before launch.**
 - Alt text: "Richard Tronson, psychotherapist, Wayfinding Practice Melbourne"
 
 ### Section 2 — About content
 **Background:** var(--cream)
 **Padding:** 6rem 3rem 4rem, max-width 580px centred
 
-Content blocks (all `.reveal`):
 - H1: Richard's name — Cormorant, clamp(3rem, 6vw, 5rem), line-height: 1.05, var(--forest)
-- Subheading: "Psychotherapist · Melbourne" — section label scale, var(--mist), written in mixed case, uppercased by CSS
-- About copy — use this text verbatim:
+- Subheading: "Psychotherapist · Melbourne" — section label scale, var(--mist), uppercased by CSS
+- About copy — verbatim:
 
   "I am a human before I am a therapist. I believe that connection is healing — that therapy offers people a chance to pause, slow down, and re-orient. I think of it as a form of wayfinding that happens in relationship: a space to listen more deeply, feel, speak openly, and make sense of life. The work is relational, but it is always in service of you.
 
@@ -477,46 +472,45 @@ Content blocks (all `.reveal`):
   DM Sans 300, 1rem, var(--earth). Max-width 580px strictly observed.
 - Divider: 0.5px solid var(--amber-gold), full column width
 
-### Section 3 — Approach / credentials
+### Section 3 — Bark galleries image
+- `about-bark-galleries.webp` — full width, 320px height, overlay rgba(0,0,0,0.45)
+- Sits directly below the amber divider after Richard's copy
+- No caption — visual breath before credentials section
+
+### Section 4 — Approach / credentials
 **Layout:** Two columns — approach text left (~60%), credentials right (~40%)
 **Background:** var(--cream)
 **Padding:** 4rem 3rem 8rem
 
 **Left — approach text:**
-- Cormorant italic pull quote (strongest line from Richard's copy), left border 2px solid var(--amber-gold), padding-left 2rem, var(--sage)
+- Cormorant italic pull quote, left border 2px solid var(--amber-gold), padding-left 2rem, var(--sage)
 - Approach prose: DM Sans 300, var(--earth)
 
 **Right — credentials:**
-- Treated as secondary — smaller type, lower contrast
-- Training: Bachelor of Counselling & Psychotherapy (year, institution)
+- Training: Bachelor of Counselling & Psychotherapy — **[institution and year to be provided by Richard before launch]**
 - Professional membership: PACFA (pending — show as "PACFA member in registration")
 - Supervision: ongoing clinical supervision
 - Approach influences: listed naturally in prose, not as bullet points
-- Max-width: 280px — kept narrow and subordinate
+- Max-width: 280px
 - Font: DM Sans 300, 0.85rem, var(--stone)
 
-### Section 4 — Companion images
-**Bark galleries image:**
-- `about-bark-galleries.webp` — full width, 320px height, overlay rgba(0,0,0,0.45)
-- No caption — used structurally as a visual breath between content sections
-
+### Section 5 — Companion images
 **Moss and pull quote (side by side):**
 - Two columns, 45fr 55fr
 - Left: `about-moss-sporophytes.webp`, object-fit: cover, full height of block
 - Right: Pull quote — Cormorant italic, clamp(2rem, 4vw, 3rem), var(--sage), left border 2px solid var(--amber-gold), padding-left 2.5rem
 - Pull quote text: "I am a human before I am a therapist."
-- No caption on moss image — the pull quote beside it is doing that work
 
-**Note:** `about-eucalyptus-dawn.webp` is available for this page. Exact placement to be decided in Phase 2 once Richard's copy is available and the layout has room for it.
+**Note:** `about-eucalyptus-dawn.webp` is available. Exact placement TBD once Richard's final copy and credentials are provided.
 
-### Section 5 — CTA
+### Section 6 — CTA
 **Background:** var(--cream)
 **Padding:** 6rem 3rem 8rem
 **Max-width:** 580px centred
 
-- No heading — buttons stand alone with generous whitespace. A visitor who has read the bio and pull quote does not need to be asked if they're ready.
-- Two buttons side by side: "Book a discovery call" (links to `#halaxy`, new tab) | "Get in touch" (links to contact.html)
-- Below buttons, small text: "Free 20-minute discovery call available" — DM Sans 300, 0.8rem, var(--stone)
+- No heading — buttons stand alone with generous whitespace
+- Two buttons: "Book a discovery call" (links to `#halaxy`, new tab) | "Get in touch" (links to contact.html)
+- Below buttons: "Free 20-minute discovery call available" — DM Sans 300, 0.8rem, var(--stone)
 
 ---
 
@@ -529,19 +523,20 @@ Content blocks (all `.reveal`):
 <link rel="canonical" href="https://wayfindingpractice.com.au/contact.html">
 ```
 
-### Shared nav and footer
-Uses the same nav and footer HTML as all other pages.
-
 ### Section 1 — Contact opening
-The conventional darkened-image hero is removed. The contact page opens directly into content — clear, warm, no friction.
-
 **Background:** var(--cream)
 **Padding-top:** Nav height (80px) + 5rem
 
 - H1: "You're welcome here." — Cormorant italic, clamp(3rem, 6vw, 5rem), line-height: 1.05, var(--forest). `.reveal-mask`
 - Subline: "Reach out with questions, or simply to introduce yourself." — DM Sans 300, 1rem, var(--stone). `.reveal`
 
-The two-column split begins directly below with no visual gap — the heading belongs to both columns.
+### Section 1b — Dandelion image
+Sits between the H1/subline and the contact grid. An invitation before the form.
+
+- Full width, 300px height
+- Background: `contact-dandelion-dispersal.webp`, overlay rgba(0,0,0,0.2) — very light
+- background-size: cover, background-position: center
+- Caption: "ready, without knowing where" — below the image, left-aligned, var(--stone), DM Sans 300 italic, 0.68rem, tracking 0.06em. Not overlaid on the image.
 
 ### Section 2 — Contact grid
 **Background:** var(--cream)
@@ -550,9 +545,8 @@ The two-column split begins directly below with no visual gap — the heading be
 **Left column — details:**
 - Section label: "Contact" — var(--mist), `.reveal`
 - H2: "No pressure to explain / everything at once." — var(--forest), `.reveal-mask`
-  - This is the most therapeutically accurate line on the site. It names the visitor's actual experience.
 - Body: "I aim to respond within two business days." — var(--earth), `.reveal`
-- Details list (DM Sans 300, 0.9rem, var(--earth)):
+- Details list:
   - Location: Melbourne, Victoria
   - Sessions: In person & telehealth
   - Email: hello@wayfindingpractice.com.au (linked, var(--forest))
@@ -561,8 +555,7 @@ The two-column split begins directly below with no visual gap — the heading be
 **Right column — form:**
 
 ```html
-<form action="https://formspree.io/f/[FORMSPREE_ID]" method="POST">
-  <!-- Honeypot spam protection -->
+<form action="https://formspree.io/f/xeenlvka" method="POST">
   <input type="text" name="_gotcha" style="display:none">
 
   <div class="form-group">
@@ -613,9 +606,10 @@ The two-column split begins directly below with no visual gap — the heading be
 ```
 
 **Key form decisions:**
-- Message is optional — no asterisk, no `required`. Removes the barrier for someone without words yet.
-- Only name and email are required.
-- This same form HTML is used on index.html Section 9 — both submit to Formspree. Intentional.
+- Message is optional — no asterisk, no `required`
+- Only name and email are required
+- Formspree ID: `xeenlvka` — already inserted above
+- Same form HTML used on index.html Section 9
 
 **Form validation (JavaScript):**
 - Required fields: name, email only
@@ -629,14 +623,7 @@ The two-column split begins directly below with no visual gap — the heading be
 - Inputs: full width, no border, border-bottom 0.5px solid var(--pale), background transparent
 - Focus: border-bottom transitions to var(--sage)
 - Radio buttons: custom styled, no browser default appearance
-- Submit button: border 0.5px solid var(--sage), transparent bg, transitions to var(--forest) on hover, var(--cream) text on hover
-
-### Section 3 — Closing image
-After the form. The visitor has reached out, or is about to. A final breath.
-
-- Full width, 300px height
-- Background: `contact-dandelion-dispersal.webp`, overlay rgba(0,0,0,0.5)
-- Caption: "ready, without knowing where" — centred, var(--stone), italic, 0.68rem
+- Submit button: border 0.5px solid var(--sage), transparent bg, transitions to var(--forest) on hover
 
 ---
 
@@ -649,22 +636,31 @@ After the form. The visitor has reached out, or is about to. A final breath.
 <link rel="canonical" href="https://wayfindingpractice.com.au/faq.html">
 ```
 
-### Shared nav and footer
-Uses the same nav and footer HTML as all other pages.
-
 ### Content
-Simple, cream background. Max-width 680px centred. DM Sans 300 body, Cormorant headings. Minimal animations — `.reveal` on each Q&A block with stagger.
+**Background:** var(--cream)
+**Max-width:** 900px centred, left-aligned text in centred column
+**Animations:** `.reveal` on each Q&A block with stagger 0.1s. No other animations on this page.
 
 **H1:** "Some questions, answered."
 **Intro:** "If something isn't covered here, you're welcome to get in touch. There are no wrong questions." — DM Sans 300, 1rem, var(--stone)
 
-**Q&A format:**
-- Question: DM Sans 400, 0.9rem, var(--forest), uppercase, tracking 0.1em — or Cormorant italic 1.2rem var(--forest) — decide during build which reads better
-- Answer: DM Sans 300, 1rem, var(--earth), max-width 580px
-- Divider between items: 0.5px solid var(--pale)
-- Each Q&A block: `.reveal` with stagger 0.1s
+### Illustration
+- Image: `faq-illustration-conversation.webp`
+- Sits below the H1 and intro text, before the first Q&A block
+- Full width, max-width 900px centred
+- No overlay, no darkening, no caption
+- Alt text: "Two people in conversation, rendered as a delicate line illustration."
 
-**Questions and answers — use verbatim:**
+### Q&A format — collapsible
+- Questions visible by default, answers hidden
+- Click/tap to expand — answer reveals with subtle fade-in
+- + / − indicator right-aligned on each question row
+- One answer open at a time
+- Question: Cormorant italic, 1.2rem, var(--forest)
+- Answer: DM Sans 300, 1rem, var(--earth), max-width 900px
+- Divider between items: 0.5px solid var(--pale)
+
+### Questions and answers — verbatim
 
 **What does a session with you look like?**
 I practice integrative psychotherapy — which means I don't apply a single method to everyone who walks in. Instead, I work from what you bring: your history, your context, the way you make sense of things. Sessions are collaborative and unhurried. There's no script, and no homework unless it genuinely fits. The work is done when it feels done — that's something we work out together, not something decided in advance.
@@ -677,6 +673,16 @@ I ask for 48 hours notice for cancellations or appointment changes. Cancellation
 
 **Where are you located, and how does telehealth work?**
 I work from a consulting room in outer northeast Melbourne, and also offer sessions via telehealth. Online sessions run through a secure video platform — all you need is a quiet private space and a reliable internet connection. [Address and location details to be added before launch.]
+
+### Fungus band divider
+Sits midway through FAQ, after the "Where are you located" Q&A block.
+
+- Full width, 200px height
+- Background: `texture-amber-diagonal.webp`, overlay rgba(0,0,0,0.55)
+- Centred text: "In person · Telehealth · Melbourne" — spaced small caps, var(--amber-gold) at 50% opacity, 0.72rem, centred
+- Caption: "the growing edge" — below the band, right-aligned, var(--stone), DM Sans 300 italic, 0.68rem
+
+### Questions continued — verbatim
 
 **What's the difference between psychotherapy and counselling?**
 There's a lot of overlap between the different approaches to mental health care, but there are meaningful distinctions. Psychology is a science and its approaches are largely evidence-based and structured — psychologists are trained to assess, diagnose, and treat specific conditions using established frameworks. Counselling tends to focus on specific life challenges, offering a supportive space to navigate difficulty and make sense of what's happening. Psychotherapy goes deeper — it's concerned not just with symptoms or situations, but with the underlying patterns, relationships, and ways of being that shape how we experience our lives. The work is slower, more relational, and oriented toward lasting change rather than immediate relief. My practice draws on both counselling and psychotherapy traditions, shaped by what each person actually needs.
@@ -693,7 +699,7 @@ You don't need to be a certain kind of person to belong in a session with me. Ev
 **What if I'm in crisis or need urgent support?**
 I'm not a crisis support service — my work is longer-term and relational rather than immediate intervention. If you're in crisis or need urgent support, please contact Lifeline on 13 11 14, available 24 hours a day. Beyond Blue (1300 22 4636) and the Crisis Assessment and Treatment team through your local hospital are also available. If you're in immediate danger, please call 000.
 
-**Closing CTA:**
+### Closing CTA
 - Text: "Still have a question? Get in touch — even a few words is enough to start."
 - Button: "Send a message" — links to contact.html
 - Style: same as other page CTAs
@@ -708,9 +714,6 @@ I'm not a crisis support service — my work is longer-term and relational rathe
 <link rel="canonical" href="https://wayfindingpractice.com.au/privacy.html">
 ```
 
-### Shared nav and footer
-Uses the same nav and footer HTML as all other pages.
-
 ### Content
 Simple, clean, var(--cream) background. Max-width 580px centred. DM Sans 300 body, Cormorant headings. No animations on this page.
 
@@ -722,6 +725,18 @@ Sections:
 5. Your rights under the Australian Privacy Act 1988
 6. Contact for privacy enquiries: hello@wayfindingpractice.com.au
 7. Last updated: [date]
+
+---
+
+## Pre-launch checklist
+- [ ] Replace `#halaxy` with actual Halaxy booking URL throughout all pages
+- [ ] Replace `about-richard-portrait.webp` with final professional portrait
+- [ ] Richard to review and approve Pillar 02 copy ("Grounded & Contextual") — written by Claude Design
+- [ ] Richard to provide institution and year for credentials section on about.html
+- [ ] Add physical address to FAQ telehealth answer
+- [ ] Generate and implement `texture-path-trace.webp` path trace overlay on index.html
+- [ ] Privacy policy Last Updated date confirmed
+- [ ] Formspree tested end to end — submit test message, confirm receipt at hello@wayfindingpractice.com.au
 
 ---
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Wayfinding Practice</title>
+  <link rel="canonical" href="https://wayfindingpractice.com.au/privacy.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Wayfinding Practice — home">
+        <img class="nav__logo-img nav__logo-img--outline" src="images/logo/wayfinding-logo-outline.png" alt="Wayfinding Practice">
+        <img class="nav__logo-img nav__logo-img--compact" src="images/logo/wayfinding-logo-compact.png" alt="" aria-hidden="true">
+      </a>
+      <div class="nav__center">
+        <ul class="nav__links">
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+          <li><a href="faq.html" class="nav__link">FAQ</a></li>
+        </ul>
+        <a href="#halaxy" target="_blank" rel="noopener" class="nav__cta">Book a Discovery Call</a>
+      </div>
+      <a href="#halaxy" target="_blank" rel="noopener" class="nav__mobile-book">Book</a>
+      <button class="nav__hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
+    <button class="nav-overlay__close" type="button" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav-overlay__link">Home</a>
+    <a href="about.html" class="nav-overlay__link">About</a>
+    <a href="contact.html" class="nav-overlay__link">Contact</a>
+    <a href="faq.html" class="nav-overlay__link">FAQ</a>
+    <a href="#halaxy" target="_blank" rel="noopener" class="nav-overlay__link">Book a Discovery Call</a>
+  </div>
+
+  <main class="privacy-page">
+    <div class="privacy-page__inner">
+      <h1>Privacy Policy</h1>
+      <span class="privacy-page__updated">Last updated: October 2025</span>
+
+      <p>This privacy policy describes how Wayfinding Practice collects, uses, and protects information submitted through this website. It does not cover clinical records — those are handled separately, see below.</p>
+
+      <h2>What information we collect</h2>
+      <p>The contact form on this website collects the following information:</p>
+      <ul>
+        <li>Your name</li>
+        <li>Your email address</li>
+        <li>Your phone number (optional)</li>
+        <li>Your preferred contact method</li>
+        <li>Any message you choose to share</li>
+      </ul>
+
+      <h2>How it is used</h2>
+      <p>The information you submit through the contact form is used solely to respond to your enquiry. It is not used for marketing, not shared with third parties, and not added to any mailing list. There is no mailing list.</p>
+
+      <h2>Storage and security</h2>
+      <p>Form submissions are processed by Formspree, a third-party form-handling service. Your submission passes through Formspree's servers before reaching me by email. Formspree's own privacy practices are described in their <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.</p>
+      <p>Once received, your message is stored in my email inbox and treated as confidential correspondence.</p>
+
+      <h2>Clinical records</h2>
+      <p>Clinical records — session notes, intake information, appointment history — are not collected through this website. They are handled separately through Halaxy, a practice management platform that complies with Australian healthcare privacy requirements. If you become a client, you will be given clear information about how your clinical information is stored and protected before any session begins.</p>
+
+      <h2>Your rights</h2>
+      <p>Under the Australian Privacy Act 1988 you have the right to access information held about you, to request corrections to that information, and to make a complaint about how it has been handled. You can exercise these rights by contacting me at the email address below.</p>
+
+      <h2>Cookies</h2>
+      <p>This website does not use tracking cookies or analytics. The only cookies set are short-lived session cookies required by the Formspree contact form to function.</p>
+
+      <h2>Contact for privacy enquiries</h2>
+      <p>If you have any questions about this policy, or about how your information is handled, please email <a href="mailto:hello@wayfindingpractice.com.au">hello@wayfindingpractice.com.au</a>.</p>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="index.html" class="footer__logo" aria-label="Wayfinding Practice — home">
+        <img src="images/logo/wayfinding-logo-outline.png" alt="Wayfinding Practice">
+      </a>
+      <p class="footer__copy">&copy; 2025 Wayfinding Practice &middot; Richard Tronson &middot; Melbourne</p>
+      <div class="footer__right">
+        <a href="privacy.html" class="footer__link">Privacy Policy</a>
+        <span class="footer__pacfa" aria-hidden="true">PACFA Member</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- main.js handles nav state + hamburger; per spec no scroll animations on this page,
+       and main.js no-ops animations under reduced-motion / when no .reveal targets exist. -->
+  <script src="js/main.js"></script>
+</body>
+</html>
