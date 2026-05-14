@@ -311,12 +311,29 @@
     el.textContent = message;
   }
 
+  /* ---------- Calendly popup ---------- */
+  function initCalendly() {
+    const CALENDLY_URL = 'https://calendly.com/richard-wayfindingpractice/free-call';
+    document.querySelectorAll('[href="#halaxy"]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.Calendly) {
+          window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+        } else {
+          window.open(CALENDLY_URL, '_blank', 'noopener');
+        }
+      });
+    });
+  }
+
   /* ---------- Init ---------- */
   function init() {
     initNav();
     initHamburger();
     initForms();
     initScrollAnimations();
+    initCalendly();
   }
 
   if (document.readyState === 'loading') {
