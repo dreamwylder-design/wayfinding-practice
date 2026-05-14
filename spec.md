@@ -15,7 +15,7 @@ Four-page static website for Wayfinding Practice, a solo psychotherapy practice 
 - GSAP v3.x + ScrollTrigger — scroll animations
 - Google Fonts — Cormorant Garamond + DM Sans
 
-**Booking system:** Halaxy. All "Book a discovery call" buttons link to the Halaxy booking page (placeholder: `#halaxy`), opening in a new tab. Do not embed a Halaxy widget — link only. Replace `#halaxy` with the actual URL when available.
+**Booking system:** Calendly. All "Book a free call" buttons open a Calendly popup widget (`initPopupWidget`) via a click handler in main.js. Calendly URL: `https://calendly.com/richard-wayfindingpractice/free-call`. The `href="#halaxy"` attribute is used as the selector hook in main.js — do not change it to another value. Calendly CSS and JS are loaded on all pages via CDN. Clinical session management is handled separately through Halaxy.
 
 ---
 
