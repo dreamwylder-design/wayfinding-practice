@@ -12,7 +12,7 @@ Clear context between phases. SPEC.md persists and is re-read at the start of ea
 - [ ] All WebP images converted at 85% quality, max 2400px long edge, placed in correct subfolders
 - [ ] Logo PNG with transparency in images/logo/
 - [ ] Formspree account created — form ID ready to replace [FORMSPREE_ID]
-- [ ] Halaxy booking URL ready to replace #halaxy placeholder
+- [x] Calendly booking URL live — `https://calendly.com/richard-wayfindingpractice/free-call` — popup widget wired via main.js
 - [ ] GitHub repository created (wayfinding-practice, private)
 - [ ] Cloudflare Pages account connected to GitHub
 - [ ] VentraIP DNS pointed to Cloudflare Pages
@@ -179,8 +179,8 @@ Clear context between phases. SPEC.md persists and is re-read at the start of ea
 **Goal:** Site live at wayfindingpractice.com.au
 
 **Steps (human does these, not Claude Code):**
-1. Replace #halaxy placeholder with actual Halaxy booking URL throughout
-2. Replace [FORMSPREE_ID] with actual Formspree form ID
+1. ~~Replace #halaxy placeholder~~ — done, Calendly popup wired
+2. ~~Replace [FORMSPREE_ID]~~ — done, Formspree ID xeenlvka in place
 3. Replace about-richard-portrait.webp with final professional portrait if ready
 4. `git add .`
 5. `git commit -m "Initial build — Home, About, Contact, Privacy"`
@@ -205,9 +205,11 @@ Clear context between phases. SPEC.md persists and is re-read at the start of ea
 
 ## Pre-launch replacements (before going live)
 - [ ] about-richard-portrait.webp — replace with final professional portrait
-- [ ] #halaxy — replace with actual Halaxy booking page URL
-- [ ] [FORMSPREE_ID] — replace with actual Formspree form ID
+- [x] Calendly booking popup wired — `https://calendly.com/richard-wayfindingpractice/free-call`
+- [x] Formspree ID in place — xeenlvka
 - [ ] Pillar 02 copy — Richard to provide body text for "Grounded & Contextual" pillar
+- [ ] FAQ — add consulting room address
+- [ ] About — add credentials (institution, year)
 - [ ] Privacy policy Last Updated date — confirm correct
 
 ---
