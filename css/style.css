@@ -694,11 +694,14 @@ body.nav-open { overflow: hidden; }
 .reveal-mask {
   /* Clip-from-bottom reveal target. GSAP animates clip-path to reveal.
      display: block (not inline-block) — inline-block collapses below the
-     baseline of following content when the heading wraps to multiple lines. */
+     baseline of following content when the heading wraps to multiple lines.
+     padding-bottom/margin-bottom pair prevents descenders (f, g, y) being clipped. */
   display: block;
   overflow: hidden;
   clip-path: inset(0 0 100% 0);
   will-change: clip-path;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
 }
 
 .reveal-settle {
@@ -941,7 +944,9 @@ body.nav-open { overflow: hidden; }
 }
 
 @media (max-width: 768px) {
-  .approach { padding: 5rem 1.5rem; }
+  .approach { padding: 4rem 1.5rem; }
+  .approach__intro { margin-bottom: 2.5rem; }
+  .approach__contour { display: none; }
   .pillars { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
@@ -1045,8 +1050,14 @@ body.nav-open { overflow: hidden; }
 }
 
 .tree-section__caption {
-  padding: 0.75rem 1.5rem 1.5rem;
-  background: var(--forest);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem 1.25rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%);
+  color: var(--cream);
+  margin: 0;
 }
 
 .tree-section__content {
@@ -1058,6 +1069,24 @@ body.nav-open { overflow: hidden; }
 
 @media (max-width: 900px) {
   .tree-section__content { padding: 4rem 1.5rem; }
+}
+
+.tree-section__portrait {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid var(--sage);
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.tree-section__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(20%);
 }
 
 .tree-section__heading {
@@ -1181,7 +1210,7 @@ body.nav-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   padding-left: calc(100px + 2rem);
 }
 
@@ -1629,7 +1658,7 @@ body.nav-open { overflow: hidden; }
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.15);
 }
 
 .about-companion__split {
