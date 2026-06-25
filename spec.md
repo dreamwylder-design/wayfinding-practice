@@ -1,5 +1,5 @@
 # SPEC.md — Wayfinding Practice
-## Technical Specification v1.7
+## Technical Specification v1.8
 
 ---
 
@@ -771,3 +771,347 @@ Sections:
 - No React, Vue, or any frontend framework
 - No Next.js
 - No Calendly — booking is Halaxy only
+
+---
+
+# SEO & Structured Data
+
+*Incorporated in v1.8. Defines meta tags, JSON-LD structured data, and sitemap. Not yet implemented in the HTML — this section is the source of truth for that work when it happens.*
+
+## Terminology rule — telehealth vs online
+
+Visitor-facing copy uses **"online"** throughout — warmer, less clinical, consistent with the site's register.
+
+The word **"telehealth"** appears only in:
+- Meta descriptions (invisible to visitors, indexed by Google)
+- JSON-LD schema `serviceType` fields (invisible to visitors)
+- sitemap.xml (invisible to visitors)
+
+This preserves the higher-volume Australian search term ("telehealth Melbourne", "telehealth psychotherapy") for indexing without it appearing in the experience.
+
+---
+
+## Meta tag corrections — existing pages
+
+### index.html
+Replace the existing SEO block with:
+
+```html
+<title>Psychotherapy Melbourne — Wayfinding Practice — Richard Tronson</title>
+<meta name="description" content="Depth-oriented individual psychotherapy for adults in Melbourne. In person and telehealth. Wayfinding Practice — Richard Tronson.">
+<meta name="author" content="Richard Tronson">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wayfinding Practice — Psychotherapy Melbourne">
+<meta property="og:description" content="Depth-oriented psychotherapy for adults navigating difficulty, transition, and the harder questions of living. In person and telehealth.">
+<meta property="og:image" content="https://wayfindingpractice.com.au/images/hero/hero-path-golden-hour.webp">
+<meta property="og:url" content="https://wayfindingpractice.com.au/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wayfinding Practice — Psychotherapy Melbourne">
+<meta name="twitter:description" content="Depth-oriented psychotherapy for adults navigating difficulty, transition, and the harder questions of living.">
+<meta name="twitter:image" content="https://wayfindingpractice.com.au/images/hero/hero-path-golden-hour.webp">
+<link rel="canonical" href="https://wayfindingpractice.com.au/">
+```
+
+### about.html
+Replace the existing SEO block with:
+
+```html
+<title>Richard Tronson — Psychotherapist Melbourne | Wayfinding Practice</title>
+<meta name="description" content="Richard Tronson is a depth-oriented psychotherapist in Melbourne offering individual therapy for adults, in person and via telehealth. Learn about his approach and training.">
+<meta name="author" content="Richard Tronson">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Richard Tronson — Psychotherapist, Melbourne">
+<meta property="og:description" content="Depth-oriented individual psychotherapy for adults. In person in Melbourne and online.">
+<meta property="og:image" content="https://wayfindingpractice.com.au/images/about/about-richard-portrait.webp">
+<meta property="og:url" content="https://wayfindingpractice.com.au/about.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Richard Tronson — Psychotherapist, Melbourne">
+<meta name="twitter:description" content="Depth-oriented individual psychotherapy for adults. In person in Melbourne and online.">
+<meta name="twitter:image" content="https://wayfindingpractice.com.au/images/about/about-richard-portrait.webp">
+<link rel="canonical" href="https://wayfindingpractice.com.au/about.html">
+```
+
+### contact.html
+Replace the existing SEO block with:
+
+```html
+<title>Contact — Wayfinding Practice Melbourne</title>
+<meta name="description" content="Get in touch with Wayfinding Practice. Book a free 20-minute discovery call or send a message. Individual psychotherapy in Melbourne — in person and telehealth.">
+<meta name="author" content="Richard Tronson">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — Wayfinding Practice Melbourne">
+<meta property="og:description" content="Reach out to Richard Tronson at Wayfinding Practice. No pressure — a few words is enough to start.">
+<meta property="og:image" content="https://wayfindingpractice.com.au/images/hero/hero-path-golden-hour.webp">
+<meta property="og:url" content="https://wayfindingpractice.com.au/contact.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact — Wayfinding Practice Melbourne">
+<meta name="twitter:description" content="Reach out to Richard Tronson at Wayfinding Practice. No pressure — a few words is enough to start.">
+<meta name="twitter:image" content="https://wayfindingpractice.com.au/images/hero/hero-path-golden-hour.webp">
+<link rel="canonical" href="https://wayfindingpractice.com.au/contact.html">
+```
+
+### faq.html — SEO block (was missing entirely, add this)
+
+```html
+<title>FAQ — Wayfinding Practice Melbourne</title>
+<meta name="description" content="Questions about psychotherapy, sessions, fees, cancellations, and online appointments at Wayfinding Practice — answered by Richard Tronson, Melbourne psychotherapist.">
+<meta name="author" content="Richard Tronson">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FAQ — Wayfinding Practice Melbourne">
+<meta property="og:description" content="Questions about psychotherapy, sessions, fees, and telehealth at Wayfinding Practice, Melbourne.">
+<meta property="og:image" content="https://wayfindingpractice.com.au/images/hero/hero-path-golden-hour.webp">
+<meta property="og:url" content="https://wayfindingpractice.com.au/faq.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FAQ — Wayfinding Practice Melbourne">
+<meta name="twitter:description" content="Questions about psychotherapy, sessions, fees, and telehealth at Wayfinding Practice, Melbourne.">
+<meta name="twitter:image" content="https://wayfindingpractice.com.au/images/hero/hero-path-golden-hour.webp">
+<link rel="canonical" href="https://wayfindingpractice.com.au/faq.html">
+```
+
+### privacy.html — add full SEO block
+
+```html
+<title>Privacy Policy — Wayfinding Practice</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://wayfindingpractice.com.au/privacy.html">
+```
+
+Note: `noindex` is correct for the privacy page — it should not appear in search results.
+
+---
+
+## JSON-LD structured data
+
+### index.html — LocalBusiness + Person schema
+Place inside `<head>`, after the meta tags. This is the primary schema block for the entire site.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "MedicalBusiness"],
+  "name": "Wayfinding Practice",
+  "description": "Depth-oriented individual psychotherapy for adults in Melbourne. In person and telehealth.",
+  "url": "https://wayfindingpractice.com.au",
+  "email": "hello@wayfindingpractice.com.au",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Melbourne",
+    "addressRegion": "VIC",
+    "addressCountry": "AU"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "State",
+      "name": "Victoria"
+    }
+  ],
+  "serviceType": [
+    "Psychotherapy",
+    "Counselling",
+    "Individual therapy",
+    "Telehealth psychotherapy",
+    "Online therapy"
+  ],
+  "employee": {
+    "@type": "Person",
+    "name": "Richard Tronson",
+    "jobTitle": "Psychotherapist",
+    "url": "https://wayfindingpractice.com.au/about.html",
+    "email": "hello@wayfindingpractice.com.au",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Wayfinding Practice"
+    }
+  },
+  "priceRange": "$$",
+  "currenciesAccepted": "AUD",
+  "paymentAccepted": "Bank transfer"
+}
+</script>
+```
+
+**Pending additions — update this block when available:**
+- `"telephone"` — add when confirmed
+- `"address" > "streetAddress"` — add once physical consulting room address is confirmed
+- `"address" > "postalCode"` — add with address
+- `"memberOf"` pointing to PACFA — add once PACFA registration is active
+- `"openingHours"` — add once session availability is confirmed
+
+### about.html — Person schema
+Place inside `<head>`, after the meta tags.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Richard Tronson",
+  "jobTitle": "Psychotherapist",
+  "url": "https://wayfindingpractice.com.au/about.html",
+  "email": "hello@wayfindingpractice.com.au",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Wayfinding Practice",
+    "url": "https://wayfindingpractice.com.au"
+  },
+  "knowsAbout": [
+    "Psychotherapy",
+    "Counselling",
+    "Anxiety",
+    "Life transitions",
+    "Grief and loss",
+    "Trauma",
+    "Relational therapy",
+    "Dance movement therapy"
+  ]
+}
+</script>
+```
+
+**Pending additions:**
+- `"hasCredential"` — add once institution and year are confirmed, using `EducationalOccupationalCredential` type
+- `"memberOf"` pointing to PACFA — add once registration is active
+
+### faq.html — FAQPage schema
+Place inside `<head>`, after the meta tags.
+
+Note: Google stopped showing FAQ rich results in search snippets as of May 2026. This schema is retained for AI search visibility (Google AI Overviews, Perplexity, etc.) which uses it as an entity signal.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a session with you look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sessions are collaborative and unhurried. I practice integrative psychotherapy — which means I work from what you bring: your history, your context, the way you make sense of things. There's no script, and no homework unless it genuinely fits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost, and are there rebates available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sessions are $110. Psychotherapy is not currently covered by Medicare or private health insurance in Australia. If cost is a barrier, please reach out and we can talk about what's possible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is your cancellation policy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "48 hours notice is requested for cancellations or appointment changes. Cancellations made within 24 hours of a scheduled session will incur the full session fee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you located, and how does online therapy work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sessions are available in person in outer northeast Melbourne and online via a secure video platform. All you need for an online session is a quiet private space and a reliable internet connection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between psychotherapy and counselling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Psychotherapy goes deeper than counselling — it's concerned not just with symptoms or situations, but with the underlying patterns, relationships, and ways of being that shape how we experience our lives. The work is slower, more relational, and oriented toward lasting change rather than immediate relief."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with couples or families?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I work with individual adults only. I don't currently offer couples or family therapy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I'm in crisis or need urgent support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wayfinding Practice is not a crisis support service. If you're in crisis or need urgent support, please contact Lifeline on 13 11 14, available 24 hours a day. Beyond Blue (1300 22 4636) is also available. If you're in immediate danger, please call 000."
+      }
+    }
+  ]
+}
+</script>
+```
+
+---
+
+## sitemap.xml
+
+Create `sitemap.xml` in the project root. Update `lastmod` dates at launch.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://wayfindingpractice.com.au/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://wayfindingpractice.com.au/about.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://wayfindingpractice.com.au/faq.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wayfindingpractice.com.au/contact.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
+```
+
+Note: privacy.html is intentionally excluded — it is set to `noindex` and should not be in the sitemap.
+
+---
+
+## Pre-launch SEO checklist additions
+
+Add these to the existing pre-launch checklist in PLAN.md:
+
+- [ ] Update `lastmod` dates in sitemap.xml to actual launch date
+- [ ] Submit sitemap to Google Search Console at `https://wayfindingpractice.com.au/sitemap.xml`
+- [ ] Add physical address and postcode to LocalBusiness schema on index.html
+- [ ] Add telephone number to LocalBusiness schema once confirmed
+- [ ] Update LocalBusiness schema `memberOf` with PACFA details once registration is active
+- [ ] Update Person schema `hasCredential` on about.html once institution and year are confirmed
+- [ ] Verify all schema using Google's Rich Results Test before launch
+- [ ] Create Google Business Profile and link to `wayfindingpractice.com.au` — highest-value local SEO action post-launch
+
+---
+
+## Version 2 SEO backlog
+
+- Add `hasCredential` to Person schema once credentials are confirmed
+- Add `memberOf` PACFA entry to both LocalBusiness and Person schemas
+- Add `Review` schema once any testimonials or directory listings exist
+- Consider Google Business Profile structured data integration
+- Add `openingHours` to LocalBusiness schema once session availability is set
