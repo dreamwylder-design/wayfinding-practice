@@ -15,7 +15,7 @@ Four-page static website for Wayfinding Practice, a solo psychotherapy practice 
 - GSAP v3.x + ScrollTrigger — scroll animations
 - Google Fonts — Cormorant Garamond + DM Sans
 
-**Booking system:** Calendly. All "Book a free call" buttons open a Calendly popup widget (`initPopupWidget`) via a click handler in main.js. Calendly URL: `https://calendly.com/richard-wayfindingpractice/free-call`. The `href="#halaxy"` attribute is used as the selector hook in main.js — do not change it to another value. Calendly CSS and JS are loaded on all pages via CDN. Clinical session management is handled separately through Halaxy.
+**Booking system:** Calendly handles booking for the free 20-minute initial consultation **only**. All "Book a free call" buttons open a Calendly popup widget (`initPopupWidget`) via a click handler in main.js. Calendly URL: `https://calendly.com/richard-wayfindingpractice/free-call`. The `href="#halaxy"` attribute is used as the selector hook in main.js — do not change it to another value. Calendly CSS and JS are loaded on all pages via CDN. Ongoing appointment booking and all clinical session management are handled separately through Halaxy.
 
 ---
 
@@ -426,7 +426,7 @@ Content:
 - Section label: "Get in touch" — var(--mist), `.reveal`
 - H2: "You're welcome / to reach out" — `.reveal-mask`
 - Body paragraph: var(--earth), `.reveal`
-- Contact details: Location (Melbourne, Victoria), Sessions (In person & telehealth)
+- Contact details: Location (Melbourne, Victoria), Sessions (In person & online)
 - Response time: "I'll be in touch within two business days."
 - Book a Session button: links to `#halaxy`, opens new tab
 
@@ -548,7 +548,7 @@ Sits between the H1/subline and the contact grid. An invitation before the form.
 - Body: "I aim to respond within two business days." — var(--earth), `.reveal`
 - Details list:
   - Location: Melbourne, Victoria
-  - Sessions: In person & telehealth
+  - Sessions: In person & online
   - Email: hello@wayfindingpractice.com.au (linked, var(--forest))
 - Book a discovery call button: links to `#halaxy`, opens new tab
 
@@ -671,15 +671,15 @@ Sessions are $110. Psychotherapy is not currently covered by Medicare or private
 **What is your cancellation policy?**
 I ask for 48 hours notice for cancellations or appointment changes. Cancellations made within 24 hours of a scheduled session will incur the full session fee. I understand that life doesn't always allow for advance notice — if something unexpected comes up, please reach out as soon as you can and we'll work it out.
 
-**Where are you located, and how does telehealth work?**
-I work from a consulting room in outer northeast Melbourne, and also offer sessions via telehealth. Online sessions run through a secure video platform — all you need is a quiet private space and a reliable internet connection. [Address and location details to be added before launch.]
+**Where are you located, and how do online sessions work?**
+I work from a consulting room in outer northeast Melbourne, and also offer sessions online. Online sessions run through a secure video platform — all you need is a quiet private space and a reliable internet connection. [Address and location details to be added before launch.]
 
 ### Fungus band divider
 Sits midway through FAQ, after the "Where are you located" Q&A block.
 
 - Full width, 200px height
 - Background: `texture-amber-diagonal.webp`, overlay rgba(0,0,0,0.55)
-- Centred text: "In person · Telehealth · Melbourne" — spaced small caps, var(--amber-gold) at 50% opacity, 0.72rem, centred
+- Centred text: "In person · Online · Melbourne" — spaced small caps, var(--amber-gold) at 50% opacity, 0.72rem, centred
 - Caption: "the growing edge" — below the band, right-aligned, var(--stone), DM Sans 300 italic, 0.68rem
 
 ### Questions continued — verbatim
@@ -770,7 +770,7 @@ Sections:
 - No CMS
 - No React, Vue, or any frontend framework
 - No Next.js
-- No Calendly — booking is Halaxy only
+- No on-site intake forms — only the free initial consultation is booked on-site (via a Calendly popup); ongoing appointment booking and all clinical session management are handled separately in Halaxy
 
 ---
 
@@ -997,7 +997,7 @@ Note: Google stopped showing FAQ rich results in search snippets as of May 2026.
       "name": "What does a session with you look like?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sessions are collaborative and unhurried. I practice integrative psychotherapy — which means I work from what you bring: your history, your context, the way you make sense of things. There's no script, and no homework unless it genuinely fits."
+        "text": "I practice integrative psychotherapy: I don't apply a single method to everyone who walks in. The approaches I draw on include ACT, psychodynamic, attachment-informed, and somatic work, chosen for what fits the person, not the other way around. Instead, I work from what you bring: your history, your context, the way you make sense of things. Sessions are collaborative and unhurried. There's no script, and no homework unless it genuinely fits. The work is done when it feels done. That's something we work out together, not something decided in advance."
       }
     },
     {
@@ -1005,7 +1005,7 @@ Note: Google stopped showing FAQ rich results in search snippets as of May 2026.
       "name": "What does it cost, and are there rebates available?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sessions are $110. Psychotherapy is not currently covered by Medicare or private health insurance in Australia. If cost is a barrier, please reach out and we can talk about what's possible."
+        "text": "Sessions are $110. Psychotherapy is not currently covered by Medicare or private health insurance in Australia — an ongoing gap in recognition that affects many practitioners and the people who seek their support. If cost is a barrier, please reach out and we can talk about what's possible."
       }
     },
     {
@@ -1013,23 +1013,23 @@ Note: Google stopped showing FAQ rich results in search snippets as of May 2026.
       "name": "What is your cancellation policy?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "48 hours notice is requested for cancellations or appointment changes. Cancellations made within 24 hours of a scheduled session will incur the full session fee."
+        "text": "I ask for 48 hours notice for cancellations or appointment changes. Cancellations made within 24 hours of a scheduled session will incur the full session fee. I understand that life doesn't always allow for advance notice. If something unexpected comes up, please reach out as soon as you can and we'll work it out."
       }
     },
     {
       "@type": "Question",
-      "name": "Where are you located, and how does online therapy work?",
+      "name": "Where are you located, and how do online sessions work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sessions are available in person in outer northeast Melbourne and online via a secure video platform. All you need for an online session is a quiet private space and a reliable internet connection."
+        "text": "I work from a consulting room in outer northeast Melbourne, and also offer sessions online. Online sessions run through a secure video platform. All you need is a quiet private space and a reliable internet connection."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the difference between psychotherapy and counselling?",
+      "name": "What's the difference between psychotherapy and counselling?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Psychotherapy goes deeper than counselling — it's concerned not just with symptoms or situations, but with the underlying patterns, relationships, and ways of being that shape how we experience our lives. The work is slower, more relational, and oriented toward lasting change rather than immediate relief."
+        "text": "There's a lot of overlap between the different approaches to mental health care, but there are meaningful distinctions. Psychology is a science and its approaches are largely evidence-based and structured. Psychologists are trained to assess, diagnose, and treat specific conditions using established frameworks. Counselling tends to focus on specific life challenges, offering a supportive space to navigate difficulty and make sense of what's happening. Psychotherapy goes deeper: it's concerned not just with symptoms or situations, but with the underlying patterns, relationships, and ways of being that shape how we experience our lives. The work is slower, more relational, and oriented toward lasting change rather than immediate relief. My practice draws on both counselling and psychotherapy traditions, shaped by what each person actually needs."
       }
     },
     {
@@ -1042,10 +1042,26 @@ Note: Google stopped showing FAQ rich results in search snippets as of May 2026.
     },
     {
       "@type": "Question",
+      "name": "How do people know when they're ready to finish therapy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no fixed answer. The minimum effective dose of therapy is different for every person and every problem. Generally, people know they're ready to finish when the difficulty that brought them has resolved, when old patterns no longer have the same grip, or when they simply feel more integrated and at ease in themselves. That sense of readiness usually emerges naturally in the work rather than being decided in advance. We'll know it when we get there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is your approach to working with clients from diverse cultural backgrounds, sexualities, and identities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You don't need to be a certain kind of person to belong in a session with me. Everyone is welcome. I work with people from all cultural backgrounds, sexualities, and identities. I don't assume a single experience of what it means to live a good life, or one right way of finding a way through it. I aim to meet each person with openness and care, attentive and responsive to your experience on its own terms, with all its complexity. I also recognise that I likely cannot fully understand your experience, particularly where it differs significantly from my own, and I won't pretend otherwise. What I can offer is a commitment to not making you translate yourself to be understood."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What if I'm in crisis or need urgent support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Wayfinding Practice is not a crisis support service. If you're in crisis or need urgent support, please contact Lifeline on 13 11 14, available 24 hours a day. Beyond Blue (1300 22 4636) is also available. If you're in immediate danger, please call 000."
+        "text": "I'm not a crisis support service. My work is longer-term and relational rather than immediate intervention. If you're in crisis or need urgent support, please contact Lifeline on 13 11 14, available 24 hours a day. Beyond Blue (1300 22 4636) and the Crisis Assessment and Treatment team through your local hospital are also available. If you're in immediate danger, please call 000."
       }
     }
   ]
