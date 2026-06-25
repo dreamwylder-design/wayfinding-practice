@@ -47,8 +47,10 @@
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
 
-    // Default reveal
+    // Default reveal — skip reveals inside a stagger group (handled below),
+    // otherwise they get two competing tweens and flash on entry.
     document.querySelectorAll('.reveal').forEach((el, i) => {
+      if (el.closest('[data-reveal-stagger]')) return;
       gsap.to(el, {
         opacity: 1,
         y: 0,
