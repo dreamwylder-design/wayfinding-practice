@@ -122,36 +122,35 @@
       );
     });
 
-    // Contour emergence (Approach section SVG only)
-    const contour = document.querySelector('[data-contour-emergence]');
-    if (contour) {
-      const path = contour.querySelector('path');
-      if (path) {
+    // Contour emergence — Approach section SVG and seam contours.
+    // Each [data-contour-emergence] draws its path(s) in on scroll; the group
+    // fades to data-contour-opacity (default 0.12). Multi-path seams stagger.
+    document.querySelectorAll('[data-contour-emergence]').forEach((contour) => {
+      const paths = contour.querySelectorAll('path');
+      if (!paths.length) return;
+      const targetOpacity = parseFloat(contour.dataset.contourOpacity) || 0.12;
+      paths.forEach((path) => {
         const length = path.getTotalLength();
         path.style.strokeDasharray = length;
         path.style.strokeDashoffset = length;
-        gsap.to(contour, {
-          opacity: 0.12,
-          duration: 2,
-          ease: 'power1.inOut',
-          scrollTrigger: {
-            trigger: contour,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        });
-        gsap.to(path, {
-          strokeDashoffset: 0,
-          duration: 2,
-          ease: 'power1.inOut',
-          scrollTrigger: {
-            trigger: contour,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        });
-      }
-    }
+      });
+      // Each tween needs its OWN scrollTrigger config object — GSAP mutates
+      // the config when building the trigger, so a shared object breaks the
+      // second tween.
+      gsap.to(contour, {
+        opacity: targetOpacity,
+        duration: 2,
+        ease: 'power1.inOut',
+        scrollTrigger: { trigger: contour, start: 'top 80%', toggleActions: 'play none none none' },
+      });
+      gsap.to(paths, {
+        strokeDashoffset: 0,
+        duration: 2.2,
+        ease: 'power1.inOut',
+        stagger: 0.12,
+        scrollTrigger: { trigger: contour, start: 'top 80%', toggleActions: 'play none none none' },
+      });
+    });
   }
 
   /* ---------- Nav scroll behaviour ---------- */
