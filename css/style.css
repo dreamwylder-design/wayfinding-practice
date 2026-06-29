@@ -462,12 +462,10 @@ body.nav-open { overflow: hidden; }
 .footer__link:hover { color: var(--cream); }
 
 .footer__pacfa {
-  display: none;
+  display: inline-flex;
   font-size: 0.7rem;
   color: var(--sage);
 }
-
-.footer__pacfa.pacfa-active { display: inline-flex; }
 
 .footer__acknowledgement {
   max-width: var(--max-width);
