@@ -231,15 +231,6 @@ p {
 .nav.is-scrolled .nav__logo-img--compact { opacity: 1; }
 
 @media (max-width: 768px) {
-  .nav__logo-img--compact { display: none; }
-  .nav.is-scrolled .nav__logo-img--outline {
-    display: block;
-    filter: brightness(0) invert(1);
-  }
-  .nav.is-scrolled .nav__hamburger span { background: var(--cream); }
-}
-
-@media (max-width: 768px) {
   .nav__logo-img { width: 100px; }
 }
 
