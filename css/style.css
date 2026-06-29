@@ -1488,7 +1488,7 @@ body.nav-open { overflow: hidden; }
 .contact-section::before {
   content: '';
   position: absolute;
-  top: 20%;
+  top: 0;
   right: -10%;
   width: 50%;
   height: 80%;
