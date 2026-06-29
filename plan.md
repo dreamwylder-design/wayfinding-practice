@@ -159,7 +159,6 @@ All changes made during the launch session. Committed to main and deployed to Cl
 ## Remaining pre-launch items
 
 - [ ] about-richard-portrait.webp — replace with final professional portrait when available (simple image swap, no code change needed)
-- [ ] Pillar 02 "Grounded & Contextual" — Richard to provide body text
 - [ ] FAQ — add consulting room address when confirmed
 
 ---

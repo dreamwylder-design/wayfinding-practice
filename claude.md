@@ -112,7 +112,6 @@ Background colours must use CSS variables: var(--cream), var(--forest), etc.
 - Do NOT add animations that violate prefers-reduced-motion
 - Do NOT create intake forms — contact form only, Halaxy handles clinical data
 - Do NOT make the welcome section atmospheric — it must be clear immediately
-- Do NOT invent copy for the "Grounded & Contextual" pillar — leave a marked placeholder
 - Do NOT add captions to images beyond the four specified in SPEC.md
 - Do NOT use --rust for anything except form error states
 
