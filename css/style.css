@@ -223,9 +223,9 @@ p {
    because a large hero logo lives in the welcome section instead. */
 .nav__logo-img--outline { display: none; }
 
-.nav__logo-img--compact { opacity: 0; }
+.nav__logo-img--compact { display: none; }
 
-.nav.is-scrolled .nav__logo-img--compact { opacity: 1; }
+.nav.is-scrolled .nav__logo-img--outline { display: block; }
 
 @media (max-width: 768px) {
   .nav__logo-img { width: 100px; }
