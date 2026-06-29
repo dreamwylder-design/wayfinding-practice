@@ -223,7 +223,7 @@
   }
 
   function setupForm(form) {
-    const successEl = form.querySelector('.form-success');
+    const successEl = form.parentElement.querySelector('.form-success');
 
     function setError(field, message) {
       const group = field.closest('.form-group');
