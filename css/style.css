@@ -1524,6 +1524,7 @@ body.nav-open { overflow: hidden; }
 @media (max-width: 900px) {
   .contact-section { padding: 5rem 1.5rem; }
   .contact-section__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-section::before { display: none; }
 }
 
 .contact-section__heading {
