@@ -234,13 +234,28 @@ p {
   .nav__logo-img { width: 100px; }
 }
 
-/* In forced dark mode (e.g. Brave), swap to the outline logo so it reads on dark nav */
-@media (prefers-color-scheme: dark) {
-  .nav.is-scrolled .nav__logo-img--compact { opacity: 0; }
-  .nav.is-scrolled .nav__logo-img--outline {
-    display: block;
-    filter: brightness(0) invert(1);
-  }
+/* Forced dark mode — browser is actually darkening the page (detected via JS, e.g. Brave).
+   Overrides nav scrolled state to forest so it looks intentional rather than muddy. */
+html.forced-dark .nav.is-scrolled {
+  background: var(--forest);
+  border-bottom-color: transparent;
+}
+html.forced-dark .nav.is-scrolled .nav__link,
+html.forced-dark .nav.is-scrolled .nav__cta {
+  color: var(--cream);
+}
+html.forced-dark .nav.is-scrolled .nav__cta:hover {
+  background: var(--cream);
+  color: var(--forest);
+}
+html.forced-dark .nav.is-scrolled .nav__logo-img--compact { opacity: 0; }
+html.forced-dark .nav.is-scrolled .nav__logo-img--outline {
+  display: block;
+  filter: brightness(0) invert(1);
+}
+@media (max-width: 768px) {
+  html.forced-dark .nav.is-scrolled .nav__mobile-book { color: var(--cream); }
+  html.forced-dark .nav.is-scrolled .nav__hamburger span { background: var(--cream); }
 }
 
 /* Hero eyebrow — small uppercase line beneath the hero logo */

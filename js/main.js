@@ -3,6 +3,21 @@
    Phase 0 foundation. Shared across all pages.
    ============================================================ */
 
+// Detect whether the browser is actually force-darkening the page (e.g. Brave dark mode).
+// Checks the computed colour of a cream element — if it's dark, the browser overrode it.
+(function () {
+  var t = document.createElement('div');
+  t.style.cssText = 'position:fixed;width:1px;height:1px;background:var(--cream);visibility:hidden;pointer-events:none;';
+  document.body.appendChild(t);
+  var bg = getComputedStyle(t).backgroundColor;
+  document.body.removeChild(t);
+  var m = bg.match(/\d+/g);
+  if (m) {
+    var brightness = (parseInt(m[0]) * 299 + parseInt(m[1]) * 587 + parseInt(m[2]) * 114) / 1000;
+    if (brightness < 128) document.documentElement.classList.add('forced-dark');
+  }
+})();
+
 (function () {
   'use strict';
 
