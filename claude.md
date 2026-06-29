@@ -79,11 +79,12 @@ Background colours must use CSS variables: var(--cream), var(--forest), etc.
 - No other images carry captions
 
 ## Forms
-- Formspree for submission — ID specified in SPEC.md
+- Formspree for submission — form ID: xnjkzdkw — routes to richard@wayfindingpractice.com.au
 - Honeypot field: input name="_gotcha" display:none
 - Required fields: name and email ONLY — message is optional
 - JavaScript validation with inline error messages
-- Success state: hide form, show .form-success div
+- Success state: hide form, show .form-success div (div must be OUTSIDE the form element)
+- JS success selector: form.parentElement.querySelector('.form-success') — not form.querySelector
 - Never redirect on form submit — inline success only
 
 ## Navigation
@@ -91,7 +92,14 @@ Background colours must use CSS variables: var(--cream), var(--forest), etc.
 - Mobile: Logo | Book | ☰ hamburger
 - Hamburger opens full-screen overlay, forest green background
 - All pages share identical nav HTML
-- Logo colour: CSS filter brightness(0) invert(1) on dark backgrounds — single PNG file, no second logo needed
+- Two logo files: wayfinding-logo-outline.png (dark backgrounds, hero) and wayfinding-logo-compact.png (scrolled cream nav)
+- Compact logo has cream background — matches scrolled nav correctly, do NOT filter it
+- Forced dark mode (Brave): html.forced-dark class added by JS — overrides to forest nav + outline logo + filtered hamburger spans
+
+## Dark mode
+- color-scheme: light only in CSS :root and meta tag on all pages
+- JS detection in main.js adds html.forced-dark when browser actually darkens colours
+- Do NOT use @media (prefers-color-scheme: dark) for nav/logo — it fires in Safari too
 
 ## What Claude gets wrong on this project — rules to prevent it
 - Do NOT use placeholder images or lorempixel URLs — use actual image files

@@ -1,5 +1,6 @@
 # SPEC.md — Wayfinding Practice
-## Technical Specification v1.8
+## Technical Specification v1.9
+### Last updated: 29-06-2026 — site launched, DNS live, launch session changes documented
 
 ---
 
@@ -142,17 +143,41 @@ Logo stays as PNG — transparency required.
 | wayfinding-logo-compact.png | Compact mark + wordmark — used in scrolled nav state on cream |
 
 **Logo colour switching — two-file model:**
-Outline and compact logos are separate PNG assets. The nav cross-fades between them on scroll via opacity (no CSS filter trick). The footer and transparent-over-hero nav use the outline logo with `filter: brightness(0) invert(1)` to render it cream on forest. Single hero overlay uses the outline logo at 360px wide (240px on mobile) at the top-left of the welcome hero.
+Outline and compact logos are separate PNG assets. The nav cross-fades between them on scroll via opacity. The footer and transparent-over-hero nav use the outline logo with `filter: brightness(0) invert(1)` to render it cream on forest. Single hero overlay uses the outline logo at 360px wide (240px on mobile) at the top-left of the welcome hero.
 
 ```css
-.nav__logo-img--outline { /* default — visible over hero */ }
-.nav__logo-img--compact { opacity: 0; /* fades in on .is-scrolled */ }
-.nav.is-scrolled .nav__logo-img--outline { opacity: 0; }
+/* Default (transparent nav over hero): outline hidden in-nav, compact invisible */
+.nav__logo-img--outline { display: none; }
+.nav__logo-img--compact { opacity: 0; }
+/* Scrolled (cream nav): compact logo fades in */
 .nav.is-scrolled .nav__logo-img--compact { opacity: 1; }
+/* Footer: outline logo inverted to cream */
 .footer .footer__logo img { filter: brightness(0) invert(1); }
 ```
 
-**Important:** The `filter: brightness(0) invert(1)` applies to the outline logo in the footer and over the hero ONLY. It must never be applied to the compact logo in the scrolled nav state.
+**Forced dark mode (e.g. Brave):** When `html.forced-dark` is present (JS-detected), the scrolled nav uses forest background and shows the outline logo with filter instead of the cream compact logo. See Dark mode handling section below.
+
+**Important:** The compact logo has a cream/white background that correctly matches the cream scrolled nav. Never apply `filter: brightness(0) invert(1)` to the compact logo.
+
+### Dark mode handling
+
+**iOS / Safari:** `color-scheme: light only` declared in CSS `:root` and as `<meta name="color-scheme" content="light only">` on all pages. This prevents Safari from auto-darkening the page when the user has dark mode on. The site is intentionally light-only and does not support dark mode.
+
+**Brave and Chromium forced dark mode:** Some browsers (notably Brave) ignore `color-scheme: light only` and forcibly remap colours. A JS detection script at the top of `main.js` creates an invisible element with `background: var(--cream)`, reads its computed colour, and checks brightness. If brightness < 128 (cream has been darkened), `html.forced-dark` is added to the document element.
+
+```css
+/* Forced dark mode overrides — only applied when JS detects actual colour remapping */
+html.forced-dark .nav.is-scrolled { background: var(--forest); }
+html.forced-dark .nav.is-scrolled .nav__logo-img--compact { opacity: 0; }
+html.forced-dark .nav.is-scrolled .nav__logo-img--outline {
+  display: block;
+  filter: brightness(0) invert(1);
+}
+/* Mobile hamburger spans use filter (not background colour) — Brave remaps colour values */
+html.forced-dark .nav__hamburger span { filter: brightness(0) invert(1); }
+```
+
+This approach correctly distinguishes "dark mode on but browser respects our declaration" (Safari — no class added, cream nav preserved) from "browser is actually darkening colours" (Brave — class added, forest nav applied).
 
 ### Images available but not yet assigned
 | Filename | Description | Notes |
@@ -182,11 +207,15 @@ Outline and compact logos are separate PNG assets. The nav cross-fades between t
 ### Footer
 **All pages:**
 - Background: var(--forest)
-- Left: Wayfinding Practice logo (cream version)
-- Centre: copyright line — © 2025 Wayfinding Practice · Richard Tronson · Melbourne
+- Left: Wayfinding Practice logo (cream version, filter: brightness(0) invert(1))
+- Centre: © 2026 Wayfinding Practice · Richard Tronson · Melbourne / PACFA Reg. Certified Practising 33600 (centered, 0.8rem, beneath copyright)
 - Right: Privacy Policy link
-- Bottom row: PACFA member badge placeholder (hidden until activated with class .pacfa-active)
+- Bottom row: Aboriginal flag (aboriginalflag.png) + acknowledgement of country text
 - Padding: 2.5rem 3rem
+
+**PACFA display format (per PACFA member guidelines):**
+`PACFA Reg. Certified Practising 33600`
+This exact format is required. Do not reorder or abbreviate.
 
 ### Typography loading
 See brand.md — copy the link tags exactly as specified there.
@@ -431,7 +460,7 @@ Content:
 - Book a Session button: links to `#halaxy`, opens new tab
 
 **Right column — form:**
-See Contact page form specification. Same form HTML used here and on contact.html. Both submit to Formspree `xeenlvka`.
+See Contact page form specification. Same form HTML used here and on contact.html. Both submit to Formspree `xnjkzdkw`.
 
 ---
 
@@ -555,7 +584,7 @@ Sits between the H1/subline and the contact grid. An invitation before the form.
 **Right column — form:**
 
 ```html
-<form action="https://formspree.io/f/xeenlvka" method="POST">
+<form action="https://formspree.io/f/xnjkzdkw" method="POST">
   <input type="text" name="_gotcha" style="display:none">
 
   <div class="form-group">
@@ -608,7 +637,7 @@ Sits between the H1/subline and the contact grid. An invitation before the form.
 **Key form decisions:**
 - Message is optional — no asterisk, no `required`
 - Only name and email are required
-- Formspree ID: `xeenlvka` — already inserted above
+- Formspree ID: `xnjkzdkw` — already inserted above
 - Same form HTML used on index.html Section 9
 
 **Form validation (JavaScript):**

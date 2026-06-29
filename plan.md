@@ -6,224 +6,173 @@ Clear context between phases. SPEC.md persists and is re-read at the start of ea
 
 ---
 
-## Pre-build checklist (complete before Phase 0)
+## Pre-build checklist
 
-- [ ] Folder structure created on Desktop per SPEC.md file structure
-- [ ] All WebP images converted at 85% quality, max 2400px long edge, placed in correct subfolders
-- [ ] Logo PNG with transparency in images/logo/
-- [ ] Formspree account created — form ID ready to replace [FORMSPREE_ID]
+- [x] Folder structure created per SPEC.md file structure
+- [x] All WebP images converted at 85% quality, max 2400px long edge, placed in correct subfolders
+- [x] Logo PNGs with transparency in images/logo/
+- [x] Formspree account created — form ID xnjkzdkw (routes to richard@wayfindingpractice.com.au)
 - [x] Calendly booking URL live — `https://calendly.com/richard-wayfindingpractice/free-call` — popup widget wired via main.js
-- [ ] GitHub repository created (wayfinding-practice, private)
-- [ ] Cloudflare Pages account connected to GitHub
-- [ ] VentraIP DNS pointed to Cloudflare Pages
-- [ ] All planning documents in project root: CLAUDE.md, SPEC.md, PLAN.md, brand.md
-
-**Images ready for conversion (85% WebP, max 2400px long edge):**
-- hero-path-golden-hour.webp — from croppedheropath.jpg → images/hero/
-- hero-tree-bw-panoramic.webp — from hero-tree-bw-panoramic.jpg → images/hero/
-- about-richard-portrait.webp — PLACEHOLDER, background blurred/darkened → images/about/
-- about-eucalyptus-dawn.webp — from Newtree.webp → images/about/
-- about-moss-sporophytes.webp — from about-moss-sporophytes.jpg → images/about/
-- about-bark-galleries.webp → images/about/
-- contact-dandelion-dispersal.webp → images/contact/
-- texture-amber-diagonal.webp — from texture-amber-diagonal.jpg → images/texture/
-- texture-fungus-purple-blue.webp — from texture-fungus-purple-blue.jpg → images/texture/
-
-**Portrait note:** about-richard-portrait.webp is a placeholder. The background has been blurred and darkened in Photoshop. Replace with final professional portrait before launch — this is a simple image swap, no code change needed.
+- [x] GitHub repository created (wayfinding-practice, private — dreamwylder-design/wayfinding-practice)
+- [x] Cloudflare Pages connected to GitHub — auto-deploys on push to main
+- [x] DNS transferred to Cloudflare — site live at wayfindingpractice.com.au and www.wayfindingpractice.com.au
+- [x] All planning documents in project root: CLAUDE.md, SPEC.md, PLAN.md, brand.md
 
 ---
 
-## Phase 0 — Foundation (do this first, once)
+## Phase 0 — Foundation ✓ COMPLETE
 
-**Goal:** Shared CSS, shared JS, shared nav and footer working across all pages.
-
-**Instructions for Claude Code:**
-"Read CLAUDE.md, SPEC.md, and brand.md. Then build the shared foundation only — do not build any page content yet. Deliver: (1) style.css with all CSS custom properties from brand.md, reset, typography, nav styles, footer styles, form styles, animation classes (.reveal, .reveal-mask, .reveal-settle), and responsive breakpoints. (2) main.js with Lenis initialisation, GSAP ScrollTrigger setup, nav scroll behaviour at 60px, mobile hamburger menu, prefers-reduced-motion handling, and form submission handler. (3) A nav.html and footer.html snippet — not standalone pages, just the HTML fragments to be copy-pasted into each page. Show me the nav and footer rendered before proceeding."
-
-**Done when:**
-- [ ] style.css exists with all CSS variables matching brand.md exactly
-- [ ] main.js exists with Lenis and GSAP wired
-- [ ] prefers-reduced-motion handled — animations disabled, Lenis disabled if set
-- [ ] Nav renders correctly on desktop and mobile
-- [ ] Footer renders correctly
-- [ ] Hamburger menu opens and closes
-- [ ] Nav transitions from transparent to scrolled state correctly at 60px
+**Done:**
+- [x] style.css exists with all CSS variables matching brand.md exactly
+- [x] main.js exists with Lenis and GSAP wired
+- [x] prefers-reduced-motion handled — animations disabled, Lenis disabled if set
+- [x] Nav renders correctly on desktop and mobile
+- [x] Footer renders correctly
+- [x] Hamburger menu opens and closes
+- [x] Nav transitions from transparent to scrolled state correctly at 60px
 
 ---
 
-## Phase 1 — Home page (index.html)
+## Phase 1 — Home page ✓ COMPLETE
 
-**Goal:** Complete home page with all 9 sections, real images, animations working.
-
-**Instructions for Claude Code:**
-"Read SPEC.md sections for index.html. Build the complete home page — all 9 sections — using the shared style.css and main.js from Phase 0. Use the actual image files from the images/ folder as specified in the image inventory in SPEC.md. Do not use placeholder images. Wire all scroll animations using GSAP ScrollTrigger applied to .reveal, .reveal-mask, and .reveal-settle classes. The contour emergence SVG goes in Section 3 only. The Halaxy booking URL placeholder is #halaxy — leave it as is. Show me a screenshot review after building."
-
-**Build order within this phase:**
-1. HTML structure — all 9 sections, semantic markup, correct heading hierarchy
-2. Images — all placed correctly with WebP src, correct object-position, and alt text
-3. CSS — section-specific styles only (shared styles already in style.css)
-4. Animations — GSAP ScrollTrigger applied to all .reveal elements, contour emergence SVG in Section 3
-5. Review and fix
-
-**Key image placements to verify:**
-- Section 1: hero-path-golden-hour.webp, object-position: center 40%
-- Section 5: hero-tree-bw-panoramic.webp, filter: grayscale(100%)
-- Section 6: texture-amber-diagonal.webp, overlay rgba(0,0,0,0.55)
-
-**Done when:**
-- [ ] All 9 sections present and correctly structured
-- [ ] All images loading with correct alt text
-- [ ] Four TTM captions present at correct positions, correct colour and size
-- [ ] Scroll animations working on all .reveal elements
-- [ ] Amber divider (Section 2) renders correctly
-- [ ] Contour emergence SVG in Section 3 triggers on scroll
-- [ ] Quote section (Section 4) renders in dark amber gradient, .reveal-settle working
-- [ ] Tree section (Section 5) renders in dark forest green with B&W image
-- [ ] Fungus band (Section 6) renders at 300px height with caption
-- [ ] Service rows hover with transform: translateX not padding-left
-- [ ] Process steps render correctly (Section 8)
-- [ ] Contact section (Section 9) includes full form and typographic moment above split
-- [ ] Mobile layout correct at 375px width
-- [ ] Nav correct on this page
-- [ ] Pillar 02 placeholder comment present in HTML
+**Done:**
+- [x] All 9 sections present and correctly structured
+- [x] All images loading with correct alt text
+- [x] Four TTM captions present at correct positions, correct colour and size
+- [x] Scroll animations working on all .reveal elements
+- [x] Amber divider renders correctly
+- [x] Contour emergence SVG in Section 3 triggers on scroll
+- [x] Quote section renders in dark amber gradient, .reveal-settle working
+- [x] Tree section renders in dark forest green with B&W image
+- [x] Fungus band renders at 300px height with caption
+- [x] Service rows hover with transform: translateX
+- [x] Process steps render correctly
+- [x] Contact section includes full form and typographic moment above split
+- [x] Mobile layout correct at 375px width
+- [x] Nav correct on this page
 
 ---
 
-## Phase 2 — About page (about.html)
+## Phase 2 — About page ✓ COMPLETE
 
-**Goal:** Complete About page with portrait, Richard's copy, credentials, pull quote, CTA.
-
-**Pre-phase requirement:** Richard's About copy must be finalised and saved as about-copy.md in project root before this phase begins. Portrait placeholder is already in images/about/ — use it for build, flag for replacement.
-
-**Instructions for Claude Code:**
-"Read SPEC.md sections for about.html and read about-copy.md for the actual copy. Build the complete About page using shared style.css and main.js. Use the portrait image from images/about/about-richard-portrait.webp — note this is a placeholder to be replaced before launch. The eucalyptus dawn image (about-eucalyptus-dawn.webp) is available — place it where it fits best in the layout given Richard's actual copy. Apply all .reveal animations. The pull quote 'I am a human before I am a therapist' should use the pull-quote treatment specified in SPEC.md. H1 line-height must be 1.05, first line overlapping the portrait gradient zone."
-
-**Done when:**
-- [ ] Portrait image displays correctly with cream gradient fade at bottom
-- [ ] H1 sits on cream band overlapping portrait bottom, line-height 1.05
-- [ ] Richard's copy used verbatim from about-copy.md
-- [ ] Credentials section present, appropriately weighted and subordinate
-- [ ] Pull quote styled correctly with amber left border
-- [ ] Companion images (bark galleries, moss sporophytes) placed correctly
-- [ ] about-eucalyptus-dawn.webp placed appropriately given copy
-- [ ] CTA section with two buttons present, no heading above buttons
-- [ ] Mobile layout correct
+**Done:**
+- [x] Portrait image displays correctly with cream gradient fade at bottom
+- [x] Richard's copy used verbatim
+- [x] Credentials section present — Certified Practising Counsellor, PACFA / Reg. 33600
+- [x] Companion images placed correctly
+- [x] CTA section with two buttons present
+- [x] Mobile layout correct
 
 ---
 
-## Phase 3 — Contact page (contact.html)
+## Phase 3 — Contact page ✓ COMPLETE
 
-**Goal:** Complete Contact page with working form, Formspree integrated, success message.
-
-**Pre-phase requirement:** Formspree form ID must be ready. Halaxy URL must be ready.
-
-**Instructions for Claude Code:**
-"Read SPEC.md sections for contact.html. Build the complete Contact page. Replace [FORMSPREE_ID] with the actual Formspree form ID. Replace #halaxy with the actual Halaxy booking URL. Implement JavaScript form validation with inline error messages as specified — required fields are name and email only, message is optional. Implement the inline success message — hide the form, show the success div. Confirm the honeypot field is present and hidden. The dandelion closing image must be placed after the form, not before it, darkened correctly, with caption."
-
-**Done when:**
-- [ ] Page opens directly into content — no darkened hero image
-- [ ] H1 "You're welcome here." renders correctly with reveal-mask
-- [ ] H2 "No pressure to explain everything at once." is the contact grid H2
-- [ ] Form renders with all 5 fields correctly
-- [ ] Message field has no asterisk and no required attribute
-- [ ] Radio buttons custom styled — no default browser appearance
-- [ ] Honeypot field present, hidden, named _gotcha
-- [ ] Formspree ID correctly inserted
-- [ ] JavaScript validation working — error states on name and email only
-- [ ] Success message shows on valid submit, form hides
-- [ ] Halaxy link in Book a Session button opens new tab
-- [ ] Dandelion closing image renders after form with caption "ready, without knowing where"
-- [ ] Mobile layout correct
+**Done:**
+- [x] Form renders with all 5 fields correctly
+- [x] Honeypot field present, hidden, named _gotcha
+- [x] Formspree ID xnjkzdkw correctly inserted (routes to richard@wayfindingpractice.com.au)
+- [x] JavaScript validation working
+- [x] Success message shows on valid submit, form hides
+- [x] Dandelion closing image renders with caption
+- [x] Mobile layout correct
 
 ---
 
-## Phase 4 — Privacy policy page (privacy.html)
+## Phase 4 — Privacy policy page ✓ COMPLETE
 
-**Goal:** Simple, complete, legally adequate privacy policy page.
-
-**Instructions for Claude Code:**
-"Build privacy.html as specified in SPEC.md. Use the same shared nav and footer as all other pages. Simple cream page, max-width 580px centred, DM Sans 300 body text, Cormorant headings. Include all 7 sections specified. Add today's date as Last Updated. No animations needed on this page."
-
-**Done when:**
-- [ ] Shared nav and footer present
-- [ ] All 7 privacy sections present
-- [ ] Last updated date included
-- [ ] Email address linked correctly
-- [ ] Formspree privacy policy linked
-- [ ] Halaxy mentioned in clinical records section
-- [ ] Mobile readable
+**Done:**
+- [x] Shared nav and footer present
+- [x] All privacy sections present
+- [x] Last updated date included
+- [x] Email address linked correctly
+- [x] Formspree privacy policy linked
+- [x] Halaxy mentioned in clinical records section
+- [x] Mobile readable
 
 ---
 
-## Phase 5 — SEO and performance audit
+## Phase 5 — SEO and performance audit ✓ COMPLETE
 
-**Goal:** Every page passes technical SEO and performance checks before deployment.
-
-**Instructions for Claude Code:**
-"Audit all four HTML files against these requirements: (1) Every page has unique title tag, meta description, canonical URL, and og: tags as specified in SPEC.md. (2) Every image has descriptive alt text — never empty alt=''. (3) Heading hierarchy is correct — one H1 per page, logical H2/H3 beneath. (4) All internal links use correct relative paths (about.html not /about). (5) Google Fonts loads via link tag with display=swap — never @import. (6) No inline styles that should be in style.css. (7) Form labels correctly associated with inputs via for/id. (8) Contour emergence SVG has aria-hidden='true' and pointer-events: none. (9) No hardcoded hex values in CSS — all colours use CSS variables. Report any issues found and fix them."
-
-**Done when:**
-- [ ] All pages have complete and correct meta tags per SPEC.md
-- [ ] All images have descriptive alt text
-- [ ] All heading hierarchies correct
-- [ ] All internal links use relative paths and work correctly
-- [ ] Google Fonts loaded correctly via link tag
-- [ ] No inline styles present that belong in style.css
-- [ ] No accessibility violations
-- [ ] No hardcoded hex values in CSS rules
+**Done:**
+- [x] All pages have complete and correct meta tags
+- [x] All images have descriptive alt text
+- [x] All heading hierarchies correct
+- [x] All internal links use relative paths
+- [x] Google Fonts loaded correctly via link tag
+- [x] No accessibility violations
+- [x] Schema markup on index.html and about.html
 
 ---
 
-## Phase 6 — Deployment
+## Phase 6 — Deployment ✓ COMPLETE
 
-**Goal:** Site live at wayfindingpractice.com.au
-
-**Steps (human does these, not Claude Code):**
-1. ~~Replace #halaxy placeholder~~ — done, Calendly popup wired
-2. ~~Replace [FORMSPREE_ID]~~ — done, Formspree ID xeenlvka in place
-3. Replace about-richard-portrait.webp with final professional portrait if ready
-4. `git add .`
-5. `git commit -m "Initial build — Home, About, Contact, Privacy"`
-6. `git push origin main`
-7. Cloudflare Pages detects push and deploys automatically
-8. Check deployment at the Cloudflare Pages URL
-9. Confirm custom domain wayfindingpractice.com.au is pointing correctly
-10. Check SSL certificate is active (Cloudflare handles this automatically)
-11. Test all pages on mobile (actual phone, not browser emulation)
-12. Test contact form end to end — submit a test message, confirm email received at hello@wayfindingpractice.com.au
-
-**Done when:**
-- [ ] Site accessible at wayfindingpractice.com.au
-- [ ] SSL active (https)
-- [ ] All pages load correctly on mobile
-- [ ] Contact form delivers email to hello@wayfindingpractice.com.au
-- [ ] Halaxy booking link works and opens in new tab
-- [ ] No broken images
-- [ ] No placeholder text (#halaxy, [FORMSPREE_ID]) remaining
+**Completed 29-06-2026:**
+- [x] Site live at wayfindingpractice.com.au and www.wayfindingpractice.com.au
+- [x] SSL active via Cloudflare (automatic)
+- [x] All pages load correctly on mobile
+- [x] Contact form delivers email to richard@wayfindingpractice.com.au
+- [x] Calendly booking link works and opens popup
+- [x] No broken images
+- [x] No placeholder text remaining
 
 ---
 
-## Pre-launch replacements (before going live)
-- [ ] about-richard-portrait.webp — replace with final professional portrait
-- [x] Calendly booking popup wired — `https://calendly.com/richard-wayfindingpractice/free-call`
-- [x] Formspree ID in place — xeenlvka
-- [ ] Pillar 02 copy — Richard to provide body text for "Grounded & Contextual" pillar
-- [ ] FAQ — add consulting room address
-- [ ] About — add credentials (institution, year)
-- [ ] Privacy policy Last Updated date — confirm correct
+## Launch session changes — 29-06-2026
+
+All changes made during the launch session. Committed to main and deployed to Cloudflare Pages.
+
+### Content
+- PACFA credential updated to "Certified Practising Counsellor, PACFA / Reg. 33600" on About page and in schema markup
+- Footer updated: PACFA Reg. Certified Practising 33600 added directly under copyright line, centered
+- Aboriginal flag (aboriginalflag.png) added to footer acknowledgement section
+
+### Forms
+- Formspree form replaced: old form xeenlvka → new form xnjkzdkw (routes to richard@wayfindingpractice.com.au)
+- Form success div moved outside `<form>` element to fix visibility bug
+- main.js updated: form success selector changed from `form.querySelector` to `form.parentElement.querySelector`
+- Form updated on both index.html and contact.html
+
+### Dark mode and browser compatibility
+- `color-scheme: light only` added to CSS `:root` and as `<meta name="color-scheme" content="light only">` on all pages — prevents Safari and other browsers from auto-darkening
+- JS-based forced dark mode detection added to main.js — creates invisible test element, reads computed cream colour, adds `html.forced-dark` class if brightness < 128 (i.e. browser is actually darkening the page, e.g. Brave)
+- `html.forced-dark` CSS rules added: nav scrolled state gets forest background, cream/white text, white outline logo with filter, white hamburger spans via filter: brightness(0) invert(1)
+- Approach: CSS media query (`prefers-color-scheme: dark`) was tried and abandoned — it fires in Safari too (which respects color-scheme: light only and keeps cream nav), so a JS detection approach was used instead
+
+### Mobile fixes
+- Contact section `::before` pseudo-element gradient hidden on mobile (max-width: 900px) — gradient centre fell on-screen at ~330px creating visible vertical tonal band
+- Contact section `::before` `top` changed from 20% to 0 to eliminate horizontal tonal seam
+
+### Logo
+- All mobile logo overrides reverted — compact logo on cream nav is the correct behaviour now that dark mode is handled separately
+
+### Hosting and DNS
+- Site deployed to Cloudflare Pages (wayfinding-practice.pages.dev) via GitHub auto-deploy
+- Cloudflare Pages connected to dreamwylder-design/wayfinding-practice on GitHub
+- DNS transferred from Ventraip DNS Hosting to Cloudflare DNS
+- www.wayfindingpractice.com.au: CNAME → wayfinding-practice.pages.dev (added in Cloudflare DNS)
+- wayfindingpractice.com.au: apex custom domain added in Cloudflare Pages (Cloudflare handles CNAME flattening)
+- Ventraip retained as domain registrar — only DNS management moved to Cloudflare
+- Google Workspace email (MX, SPF, DKIM TXT records) migrated to Cloudflare DNS — email intact
 
 ---
 
-## Version 2 backlog (after launch)
+## Remaining pre-launch items
 
-- Google Analytics or Plausible (privacy-first) setup
-- Google Business Profile created and verified
-- Psychology Today listing created, linking to site
-- PACFA badge added to footer once registered
-- Approach page
-- Fees page
-- FAQs page
-- Animated SVG logo line (amber path tracing inward)
-- texture-fungus-purple-blue.webp — assign to a section
-- about-eucalyptus-dawn.webp — confirm final placement
-- Replace placeholder portrait with final professional portrait if not done pre-launch
+- [ ] about-richard-portrait.webp — replace with final professional portrait when available (simple image swap, no code change needed)
+- [ ] Pillar 02 "Grounded & Contextual" — Richard to provide body text
+- [ ] FAQ — add consulting room address when confirmed
+
+---
+
+## Post-launch backlog
+
+- [ ] PACFA Credly badge — add to About page when received (email from admin@credly.com)
+- [ ] PACFA Find-A-Therapist profile — available in PACFA member portal
+- [ ] Delete old Formspree form xeenlvka from Formspree account
+- [ ] Google Business Profile — set up post-launch
+- [ ] Professional portrait — replace placeholder when available
+- [ ] Google Analytics or Plausible (privacy-first) setup
+- [ ] Psychology Today listing created, linking to site
+- [ ] Approach page
+- [ ] Fees page
+- [ ] Animated SVG logo line (amber path tracing inward)
