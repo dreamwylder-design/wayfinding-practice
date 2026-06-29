@@ -254,7 +254,7 @@ html.forced-dark .nav.is-scrolled .nav__logo-img--outline {
   filter: brightness(0) invert(1);
 }
 @media (max-width: 768px) {
-  html.forced-dark .nav__hamburger span { background: white; }
+  html.forced-dark .nav__hamburger span { filter: brightness(0) invert(1); }
   html.forced-dark .nav.is-scrolled .nav__mobile-book { color: white; }
 }
 
