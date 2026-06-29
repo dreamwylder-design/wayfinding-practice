@@ -3,6 +3,9 @@
    Phase 0 foundation. Shared across all pages.
    ============================================================ */
 
+/* Tell browsers this site is light-only — prevents iOS dark mode from auto-darkening sections */
+:root { color-scheme: light; }
+
 /* ---------- CSS custom properties (brand.md v1.3) ---------- */
 :root {
   /* Backgrounds */
