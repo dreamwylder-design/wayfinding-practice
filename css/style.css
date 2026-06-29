@@ -630,6 +630,14 @@ body.nav-open { overflow: hidden; }
   border-radius: 50%;
 }
 
+.contact-form__heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 1.5rem;
+}
+
 .form-submit {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem;
