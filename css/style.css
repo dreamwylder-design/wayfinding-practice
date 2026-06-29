@@ -254,8 +254,8 @@ html.forced-dark .nav.is-scrolled .nav__logo-img--outline {
   filter: brightness(0) invert(1);
 }
 @media (max-width: 768px) {
-  html.forced-dark .nav.is-scrolled .nav__mobile-book { color: var(--cream); }
-  html.forced-dark .nav.is-scrolled .nav__hamburger span { background: var(--cream); }
+  html.forced-dark .nav__hamburger span { background: white; }
+  html.forced-dark .nav.is-scrolled .nav__mobile-book { color: white; }
 }
 
 /* Hero eyebrow — small uppercase line beneath the hero logo */
