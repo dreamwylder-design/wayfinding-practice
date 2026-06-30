@@ -1309,6 +1309,10 @@ body.nav-open { overflow: hidden; }
 
 @media (max-width: 768px) {
   .services { padding: 5rem 1.5rem; }
+  /* Drop the desktop list-alignment indent on mobile — at phone widths it
+     squeezed the heading/intro into the right of the screen, reading as
+     right-aligned. Flush-left matches the rest of the site's body copy. */
+  .services__header { padding-left: 0; }
 }
 
 .services__intro {
