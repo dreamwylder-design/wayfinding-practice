@@ -1464,6 +1464,7 @@ html.forced-dark .pillar-divider {
 }
 
 .process-step__dot {
+  display: block;
   width: 12px;
   height: 12px;
   border-radius: 50%;
