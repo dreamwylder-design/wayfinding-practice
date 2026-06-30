@@ -328,16 +328,20 @@
   }
 
   /* ---------- Calendly popup ---------- */
+  /* Booking links carry a real Calendly href so they work even if JS fails.
+     When JS is on we intercept the click and open the popup instead, reading
+     the destination from the link itself so the href stays the single source
+     of truth (popup target always matches where the link would navigate). */
   function initCalendly() {
-    const CALENDLY_URL = 'https://calendly.com/richard-wayfindingpractice/free-call';
-    document.querySelectorAll('[href="#halaxy"]').forEach((el) => {
+    document.querySelectorAll('[data-booking]').forEach((el) => {
       el.addEventListener('click', (e) => {
+        const url = el.getAttribute('href');
         e.preventDefault();
         e.stopPropagation();
         if (window.Calendly) {
-          window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+          window.Calendly.initPopupWidget({ url: url });
         } else {
-          window.open(CALENDLY_URL, '_blank', 'noopener');
+          window.open(url, '_blank', 'noopener');
         }
       });
     });
