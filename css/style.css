@@ -1468,7 +1468,7 @@ html.forced-dark .pillar-divider {
   height: 12px;
   border-radius: 50%;
   background: var(--amber-gold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 1;
 }
