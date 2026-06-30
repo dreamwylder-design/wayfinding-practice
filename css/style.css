@@ -1026,7 +1026,7 @@ body.nav-open { overflow: hidden; }
     display: block;
     width: 100%;
     height: 22px;
-    opacity: 0.2;
+    opacity: 0.28;
   }
 }
 
@@ -1071,7 +1071,13 @@ body.nav-open { overflow: hidden; }
 .pillar-divider path {
   fill: none;
   stroke: var(--forest);
-  stroke-width: 1;
+  stroke-width: 2;
+}
+
+/* Forced dark mode (e.g. Brave) remaps the forest stroke; force it back to a
+   clean white wave with a post-process filter Brave can't override. */
+html.forced-dark .pillar-divider {
+  filter: brightness(0) invert(1);
 }
 
 /* ---------- Quote section (dark) ---------- */
