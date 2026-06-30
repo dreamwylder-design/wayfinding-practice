@@ -914,7 +914,7 @@ body.nav-open { overflow: hidden; }
 }
 
 /* Path-bridge — watercolour path continuing from hero photo into Approach.
-   True-alpha PNG, no blend modes or masking needed. Positioned so the path
+   True-alpha WebP, no blend modes or masking needed. Positioned so the path
    exits roughly under the photo's in-frame path (x≈0.56) and its faded tail
    ends ~50px above the Approach contour SVG. Tune top/left/width against
    the live page. */
