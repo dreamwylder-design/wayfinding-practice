@@ -938,6 +938,22 @@ body.nav-open { overflow: hidden; }
   }
 }
 
+/* Aspect-ratio guard — the bridge is anchored to a fixed % of the container,
+   but the hero photo crops continuously via background-size:cover, so the
+   painted path and the overlay only stay in register near the aspect ratio
+   this was tuned at. Hide it where cover-crop pulls them apart:
+     - very wide / ultrawide viewports (min-aspect-ratio 2/1) — photo path
+       shifts horizontally off the fixed-% overlay
+     - short landscape windows (max-height 680px) — hero exceeds 90vh, so the
+       faded tail no longer meets the Approach seam
+   Thresholds are conservative (normal ~16:10 laptops keep the flourish);
+   tighten 2/1 toward 16/10 or raise 680px if drift is still visible. */
+@media (min-aspect-ratio: 2/1), (max-height: 680px) {
+  .path-bridge {
+    display: none;
+  }
+}
+
 /* ---------- Approach section ---------- */
 .approach {
   position: relative;
