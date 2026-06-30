@@ -1008,6 +1008,24 @@ body.nav-open { overflow: hidden; }
   max-width: 580px;
 }
 
+/* Contour wave divider between pillars — hidden by default (desktop 3-col grid
+   needs no separators); shown on mobile between stacked pillar blocks. */
+.pillar-divider {
+  display: none;
+}
+
+.pillar-divider path {
+  fill: none;
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+
+/* Forced dark mode (e.g. Brave) remaps the forest stroke; force it back to a
+   clean white wave with a post-process filter Brave can't override. */
+html.forced-dark .pillar-divider {
+  filter: brightness(0) invert(1);
+}
+
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1020,8 +1038,6 @@ body.nav-open { overflow: hidden; }
   .approach__contour { display: none; }
   .pillars { grid-template-columns: 1fr; gap: 2rem; }
   .pillar { padding-top: 0; }
-  /* Show the contour wave between stacked pillars — static echo of the
-     desktop contour motif so mobile isn't just plain text blocks. */
   .pillar-divider {
     display: block;
     width: 100%;
@@ -1062,23 +1078,6 @@ body.nav-open { overflow: hidden; }
   line-height: 1.6;
 }
 
-/* Contour wave divider between pillars — desktop hides it (3-col grid needs
-   no separators and these would become stray grid items); mobile shows it. */
-.pillar-divider {
-  display: none;
-}
-
-.pillar-divider path {
-  fill: none;
-  stroke: var(--forest);
-  stroke-width: 2;
-}
-
-/* Forced dark mode (e.g. Brave) remaps the forest stroke; force it back to a
-   clean white wave with a post-process filter Brave can't override. */
-html.forced-dark .pillar-divider {
-  filter: brightness(0) invert(1);
-}
 
 /* ---------- Quote section (dark) ---------- */
 .quote-section {
