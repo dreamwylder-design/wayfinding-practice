@@ -1451,8 +1451,8 @@ html.forced-dark .pillar-divider {
   content: '';
   position: absolute;
   top: 6px;
-  left: 8%;
-  right: 8%;
+  left: 0;
+  right: 0;
   height: 0.5px;
   background: var(--sage);
   opacity: 0.3;
