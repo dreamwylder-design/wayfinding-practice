@@ -1439,15 +1439,12 @@ html.forced-dark .pillar-divider {
   max-width: 580px;
 }
 
-.process__steps {
+.process__steps-track {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
   margin-bottom: 6rem;
 }
 
-.process__steps::before {
+.process__steps-track::before {
   content: '';
   position: absolute;
   top: 6px;
@@ -1458,9 +1455,15 @@ html.forced-dark .pillar-divider {
   opacity: 0.3;
 }
 
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
 @media (max-width: 768px) {
+  .process__steps-track::before { display: none; }
   .process__steps { grid-template-columns: 1fr; gap: 2.5rem; }
-  .process__steps::before { display: none; }
 }
 
 .process-step__dot {
