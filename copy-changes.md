@@ -197,3 +197,16 @@ All em dashes in FAQ body copy replaced with periods, colons, or commas as appro
 
 ### All pages — telehealth → online
 All instances of "telehealth" replaced with "online" across index.html, faq.html, contact.html.
+
+---
+
+## 2026-07-01 — Session 3
+
+### about.html — Bio section rewritten (mind-body theme added)
+**Before:**
+> I am a human before I am a therapist. I came to this work through my own life, through loss, through difficulty, through the slow process of finding my way. That shapes everything about how I show up, and what I want to offer you: a place to feel deeply, speak openly, and make sense of things.
+> In my own life, I've experienced what it can be like to lose contact with myself, and how profound it is to be met by someone who truly listens and wants the best for me, someone able to offer their presence, their listening, and their skill as I slowly find my way.
+
+**After:**
+> I am a human before I am a therapist. I came to this work through my own life, through loss, through difficulty, through the slow process of finding my way. Over twenty-five years of learning about the mind-body connection in my own life, I've come to know that deeper change often happens through the body and the emotions, not only the mind.
+> I know, too, what it means to be met well in that process, with real presence, real listening, real skill. That's what I aim to offer you, too.
