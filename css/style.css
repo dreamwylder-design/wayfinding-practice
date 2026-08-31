@@ -932,6 +932,18 @@ body.nav-open { overflow: hidden; }
   z-index: 2;
 }
 
+/* With JS on, the bridge stays hidden until the hero photo has loaded —
+   otherwise the <img> wins the network race and paints over an empty hero.
+   .no-js keeps the plain 0.6 opacity so the bridge still shows without JS. */
+html:not(.no-js) .path-bridge {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+html:not(.no-js) .path-bridge.is-ready {
+  opacity: 0.6;
+}
+
 @media (max-width: 768px) {
   .path-bridge {
     display: none;
@@ -1205,7 +1217,6 @@ html.forced-dark .pillar-divider {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  filter: grayscale(20%);
 }
 
 .tree-section__heading {
