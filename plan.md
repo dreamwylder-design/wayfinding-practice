@@ -158,14 +158,14 @@ All changes made during the launch session. Committed to main and deployed to Cl
 
 ## Remaining pre-launch items
 
-- [ ] about-richard-portrait.webp — replace with final professional portrait when available (simple image swap, no code change needed)
+- [x] about-richard-portrait.webp — replaced with final professional portrait (_MG_2092, seated on mossy log, 2400×1600) — 31-08-2026. Homepage tree-section circle portrait also replaced with tight face crop (portrait-circle.webp, from _MG_1851-2)
 - [ ] FAQ — add consulting room address when confirmed
 
 ---
 
 ## Post-launch backlog
 
-- [ ] PACFA Credly badge — add to About page when received (email from admin@credly.com)
+- [x] PACFA Credly badge — added to About page credentials
 - [ ] PACFA Find-A-Therapist profile — available in PACFA member portal
 - [ ] Delete old Formspree form xeenlvka from Formspree account
 - [ ] Google Business Profile — set up post-launch
