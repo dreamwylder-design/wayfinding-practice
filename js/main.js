@@ -347,6 +347,26 @@
     });
   }
 
+  /* ---------- Path-bridge reveal ---------- */
+  /* The hero photo is a CSS background-image, so the browser discovers it
+     later than the path-bridge <img>. Hold the bridge (see .path-bridge CSS)
+     until the same photo has loaded, reading the URL from the hero's computed
+     style so CSS stays the single source of truth. Reveals unconditionally on
+     error so the bridge can never be lost to a failed hero fetch. */
+  function initPathBridge() {
+    const bridge = document.querySelector('.path-bridge');
+    if (!bridge) return;
+    const reveal = () => bridge.classList.add('is-ready');
+    const hero = document.querySelector('.hero');
+    const match = hero && getComputedStyle(hero).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
+    if (!match) { reveal(); return; }
+    const img = new Image();
+    img.onload = reveal;
+    img.onerror = reveal;
+    img.src = match[1];
+    if (img.complete) reveal();
+  }
+
   /* ---------- Init ---------- */
   function init() {
     initNav();
@@ -354,6 +374,7 @@
     initForms();
     initScrollAnimations();
     initCalendly();
+    initPathBridge();
   }
 
   if (document.readyState === 'loading') {
