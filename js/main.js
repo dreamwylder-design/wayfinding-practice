@@ -45,6 +45,27 @@
     requestAnimationFrame(raf);
   }
 
+  /* ---------- In-page anchor links: scroll smoothly via Lenis instead of jumping ---------- */
+  const navHeightPx = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
+  ) || 80;
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      e.preventDefault();
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -(navHeightPx + 24) });
+      } else {
+        target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    });
+  });
+
   /* ---------- GSAP + ScrollTrigger ---------- */
   if (window.gsap && window.ScrollTrigger) {
     window.gsap.registerPlugin(window.ScrollTrigger);
